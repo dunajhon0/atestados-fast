@@ -1,0 +1,684 @@
+
+> atestados-fast@0.1.0 build
+> next build
+
+  Ôû▓ Next.js 14.2.3
+
+   Creating an optimized production build ...
+ Ô£ô Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/7) ...
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:150397)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '704587673'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:150397)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '704587673'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:150397)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '704587673'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:150397)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '704587673'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:150397)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '704587673'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+   Generating static pages (1/7) 
+ ÔÜá Sending SIGTERM signal to static worker due to timeout of 60 seconds. Subsequent errors may be a result of the worker exiting.
+ ÔÜá Restarted static page generation for /terms because it took more than 60 seconds
+ ÔÜá See more info here https://nextjs.org/docs/messages/static-page-generation-timeout
+ ÔÜá Restarted static page generation for /privacy because it took more than 60 seconds
+ ÔÜá Restarted static page generation for / because it took more than 60 seconds
+ ÔÜá Restarted static page generation for /_not-found because it took more than 60 seconds
+ ÔÜá Restarted static page generation for /cookies because it took more than 60 seconds
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:150397)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '704587673'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:150397)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '704587673'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:150397)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '704587673'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:150397)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '704587673'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:150397)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '704587673'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+ ÔÜá Sending SIGTERM signal to static worker due to timeout of 60 seconds. Subsequent errors may be a result of the worker exiting.
+ ÔÜá Restarted static page generation for /terms because it took more than 60 seconds
+ ÔÜá Restarted static page generation for /privacy because it took more than 60 seconds
+ ÔÜá Restarted static page generation for / because it took more than 60 seconds
+ ÔÜá Restarted static page generation for /_not-found because it took more than 60 seconds
+ ÔÜá Restarted static page generation for /cookies because it took more than 60 seconds
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:150397)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '704587673'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:150397)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '704587673'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:150397)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '704587673'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:150397)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '704587673'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:150397)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '704587673'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+Error: Event handlers cannot be passed to Client Component props.
+  {type: "button", onClick: function onClick, className: ..., children: ...}
+                            ^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at ek (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:140566)
+    at Object.toJSON (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135755)
+    at stringify (<anonymous>)
+    at eR (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142219)
+    at eE (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:142698)
+    at Timeout._onTimeout (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:135475)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  digest: '2681170257'
+}
+ ÔÜá Sending SIGTERM signal to static worker due to timeout of 60 seconds. Subsequent errors may be a result of the worker exiting.
+
+> Build error occurred
+Error: Static page generation for /terms is still timing out after 3 attempts. See more info here https://nextjs.org/docs/messages/static-page-generation-timeout
+    at onRestart (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\build\index.js:293:27)
+    at C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\lib\worker.js:95:40
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\export\index.js:450:20
+    at async Span.traceAsyncFn (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\trace\trace.js:154:20)
+    at async C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\export\index.js:448:24
+    at async Promise.all (index 2)
+    at async exportAppImpl (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\export\index.js:440:21)
+    at async C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\export\index.js:623:16
+    at async Span.traceAsyncFn (C:\Users\herme\OneDrive\Escritorio\proyectos\Antigravity\atestados-fast\node_modules\next\dist\trace\trace.js:154:20)
