@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useRef } from 'react';
-import { Presentation, Copy, Check, FileText, Loader2, AlertCircle, ChevronDown, ChevronRight, ArrowDown, ExternalLink } from 'lucide-react';
+import { useState, useRef, useEffect, useCallback } from 'react';
+import { Presentation, Copy, Check, FileText, Loader2, AlertCircle, ChevronDown, ChevronRight, ArrowDown, ExternalLink, Mic, MicOff } from 'lucide-react';
 
 export default function DemoSimulator() {
     const [formData, setFormData] = useState({
@@ -30,6 +30,76 @@ export default function DemoSimulator() {
 
     const [resultadoContext, setResultadoContext] = useState<any>(null);
     const [copiedSection, setCopiedSection] = useState<string | null>(null);
+
+    // Speech Recognition State
+    const [isListening, setIsListening] = useState(false);
+    const [speechSupported, setSpeechSupported] = useState(true);
+    const recognitionRef = useRef<any>(null);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+            if (SpeechRecognition) {
+                const recognition = new SpeechRecognition();
+                recognition.continuous = true;
+                recognition.interimResults = true;
+                recognition.lang = 'es-ES';
+
+                recognition.onresult = (event: any) => {
+                    let interimTranscript = '';
+                    let finalTranscript = '';
+
+                    for (let i = event.resultIndex; i < event.results.length; ++i) {
+                        if (event.results[i].isFinal) {
+                            finalTranscript += event.results[i][0].transcript;
+                        } else {
+                            interimTranscript += event.results[i][0].transcript;
+                        }
+                    }
+
+                    if (finalTranscript) {
+                        setFormData(prev => ({ ...prev, relato: prev.relato + (prev.relato && !prev.relato.endsWith(' ') ? ' ' : '') + finalTranscript }));
+                    }
+                };
+
+                recognition.onerror = (event: any) => {
+                    console.error("Speech recognition error", event.error);
+                    if (event.error !== 'no-speech') {
+                        setIsListening(false);
+                    }
+                };
+
+                recognition.onend = () => {
+                    // Si se corta y se supone que debe seguir escuchando (continuous=true puede cortarse por inactividad larga en algunos browsers)
+                    // Gestionamos el estado desde handleToggleListen preferiblemente
+                    if (isListening) {
+                        setIsListening(false);
+                    }
+                };
+
+                recognitionRef.current = recognition;
+            } else {
+                setSpeechSupported(false);
+            }
+        }
+    }, [isListening]);
+
+    const handleToggleListen = useCallback(() => {
+        if (!recognitionRef.current) return;
+
+        if (isListening) {
+            recognitionRef.current.stop();
+            setIsListening(false);
+        } else {
+            try {
+                recognitionRef.current.start();
+                setIsListening(true);
+                relatoRef.current?.focus();
+            } catch (e) {
+                console.error("Failed to start speech recognition", e);
+            }
+        }
+    }, [isListening]);
 
     const getContextualHelp = () => {
         if (!formData.relato) return "Sugerencia: incluye 'origen del aviso', 'qué se observa al llegar', 'qué manifiestan', 'actuaciones', 'situación final'.";
@@ -64,6 +134,7 @@ export default function DemoSimulator() {
             patrimonio: lowerRelato.includes('robo') || lowerRelato.includes('hurto') || lowerRelato.includes('sustra') || lowerRelato.includes('cartera') || lowerRelato.includes('móvil'),
             huida: lowerRelato.includes('huida') || lowerRelato.includes('huy') || lowerRelato.includes('fuga'),
             cctv: lowerRelato.includes('camara') || lowerRelato.includes('cámara') || lowerRelato.includes('grabación') || lowerRelato.includes('video') || pruebas.cctv,
+            detenido: lowerRelato.includes('detenid') || lowerRelato.includes('arrest') || (participantes.toLowerCase().includes('detenid')),
         };
 
         const fLugar = lugar || '[PENDIENTE: LUGAR EXACTO]';
@@ -91,12 +162,13 @@ export default function DemoSimulator() {
         const huecos = [];
         if (!lugar) huecos.push("Falta concretar lugar exacto de los hechos (vía, número, poblado).");
         if (!fecha) huecos.push("Falta concretar día y hora precisa de la intervención.");
-        if (!participantes) huecos.push("Requiere filiación completa de intervinientes (víctimas, testigos, presuntos autores/investigados).");
+        if (!participantes) huecos.push("No se rellenaron 'Personas implicadas'. La comparecencia omitirá este bloque estructuralmente.");
         if (flags.lesiones && !pruebas.parte_medico) huecos.push("Se mencionan lesiones pero no consta Parte Médico asegurado como prueba.");
         if (flags.arma && !pruebas.arma) huecos.push("Se menciona arma pero no se ha marcado como indicio intervenido preliminarmente.");
         if (flags.patrimonio && !hasManifestaciones) huecos.push("En actos patrimoniales es imperativo detallar la declaración de la víctima (tipo de efecto, tasación, autoría).");
         if (flags.huida && !lowerRelato.includes('dirección') && !lowerRelato.includes('descripción')) huecos.push("Consta huida de implicados pero faltaría descripción de los mismos y dirección de huida.");
-        if (huecos.length === 0) huecos.push("Estructura base del apunte suficientemente sólida.");
+        if (!observaciones) huecos.push("No se rellenaron 'Observaciones de gestión'. Omitido estructuralmente.");
+        if (huecos.length === 0) huecos.push("Estructura base del apunte operativamente completa.");
 
         // D) Encaje jurídico
         let encaje = "La actuación descrita podría ser compatible con una infracción ";
@@ -108,32 +180,53 @@ export default function DemoSimulator() {
         encaje += ", quedando supeditada ineludiblemente a la valoración jurídica final del instructor o de la Autoridad Judicial. Se relatan los hechos de forma aséptica y preliminar.";
 
         // E) Comparecencia
-        const pParticipantes = participantes ? `\nQue se procede a la identificación de los implicados intervinientes, con los siguientes roles y filiaciones:\n${participantes}` : "\n[PENDIENTE: IDENTIFICACIÓN Y ROLES DE IMPLICADOS / TESTIGOS / VÍCTIMAS]";
+
+        let opcionales = "";
+        if (flags.detenido) opcionales += "\n-- PRESENTAN en calidad de persona/s detenida/s: [PENDIENTE: IDENTIFICACIÓN DEL DETENIDO]\n";
+        if (pruebas.arma || pruebas.drogas) opcionales += "\n-- HACEN ENTREGA DE: Indicios aprehendidos durante la intervención.\n";
+        if (pruebas.documental || pruebas.grafica || pruebas.cctv || pruebas.parte_medico) opcionales += "\n-- APORTAN / SE INCORPORA: Documentación anexa y reportes de interés.\n";
+
+        // SMART OMISSIONS: If the block is strictly empty, we do not insert [PENDIENTE], we omit it for a cleaner read.
+        const pParticipantes = participantes ? `\n-- Que intervinientes y actuantes identifican a las siguientes personas (filiación / roles):\n  ${participantes}` : "";
 
         const activePruebas = Object.entries(pruebas).filter(([_, v]) => v).map(([k]) => k.replace('_', ' ').toUpperCase());
         const pPruebasStr = activePruebas.length > 0 ? activePruebas.join(', ') : '';
-        let pPruebasSection = pPruebasStr ? `\nQue se recogen, aseguran o da cuenta de los siguientes indicios y pruebas: ${pPruebasStr}.` : "";
-        if (notasPruebas && pPruebasSection) pPruebasSection += `\nDetalles de prueba adicionales: ${notasPruebas}`;
+        let pPruebasSection = pPruebasStr ? `\n-- Que se recogen, aseguran o da cuenta de los siguientes indicios y pruebas: ${pPruebasStr}.` : "";
+        if (notasPruebas && pPruebasSection) pPruebasSection += ` Detalles: ${notasPruebas}`;
+        if (notasPruebas && !pPruebasSection) pPruebasSection += `\n-- Que se reseñan las siguientes pruebas físicas / indicios: ${notasPruebas}`;
 
-        const pObservaciones = observaciones ? `\n\nOTRAS GESTIONES OPERATIVAS Y OBSERVACIONES RELEVANTES:\n${observaciones}` : "";
+        const pObservaciones = observaciones ? `\n-- Que se realizan las siguientes gestiones operativas adicionales: ${observaciones}` : "";
 
-        const comparecencia = `DILIGENCIA DE EXPOSICIÓN Y CONSTANCIA DE HECHOS
+        let origen = "[PENDIENTE: ORIGEN (aviso Sala/requerimiento/prevención)]";
+        if (lowerRelato.includes('aviso') || lowerRelato.includes('sala') || lowerRelato.includes('091') || lowerRelato.includes('112')) origen = "aviso de la Sala/CIMACC";
+        else if (lowerRelato.includes('requerid') || lowerRelato.includes('ciudadan')) origen = "requerimiento ciudadano";
+        else if (lowerRelato.includes('patrulla') || lowerRelato.includes('prevención')) origen = "labores de prevención";
 
-En [PENDIENTE: DEPENDENCIA POLICIAL O SEDE], siendo las [PENDIENTE: HORA DE CONFECCIÓN] horas del día de la fecha, los Agentes de la Autoridad con carnet profesional [PENDIENTE: NIP/TIP 1] y [PENDIENTE: NIP/TIP 2], prestando servicio para la prevención de la Seguridad Ciudadana, mediante la presente hacen constar:
+        const rawBlocks = [
+            `-- Que ${relato}`,
+            pParticipantes,
+            pPruebasSection,
+            pObservaciones
+        ].filter(b => b.trim() !== ""); // Removes empty nodes intelligently
 
-PRIMERO. - ORIGEN DE LA INTERVENCIÓN
-Que siendo las ${fFecha}, la dotación actuante es requerida/se persona prestando servicio en la zona, ocurriendo los hechos en ${fLugar}, por motivo de un presunto incidente catalogado inicialmente como: ${tipo}.
+        const cuerpoCentral = rawBlocks.join('\n');
 
-SEGUNDO. - DESARROLLO DE LA ACTUACIÓN Y MANIFESTACIONES
-A la llegada al lugar, los agentes intervinientes constatan de visu los siguientes extremos objetivos y recaban las manifestaciones in situ que a continuación se detallan (diferenciando de manera estricta ambas fuentes de información):
+        const comparecencia = `En [PENDIENTE: LOCALIDAD], siendo las [PENDIENTE: HORA] horas [PENDIENTE: MINUTOS] minutos del día [PENDIENTE: FECHA], ante la Instrucción arriba reseñada.
 
-${relato}${pParticipantes}${pPruebasSection}${pObservaciones}
+-- COMPARECEN: Los funcionarios de [PENDIENTE: CUERPO], con carnets/TIP profesionales números [PENDIENTE: LISTA], destinados en [PENDIENTE: UNIDAD/DEPENDENCIA], de servicio con el indicativo [PENDIENTE: INDICATIVO], quienes comparecen...
+${opcionales}
+-- MANIFIESTAN: Que comparecen para dar cuenta de los hechos ocurridos el ${fFecha}, en ${fLugar}, y que se detallan a continuación.
 
-TERCERO. - ACTUACIONES PRACTICADAS Y FINALIZACIÓN
-[PENDIENTE: DETALLAR TRASLADOS, LECTURAS DE DERECHOS SI PROCEDEN, GESTIONES CON SALA U OTROS INDICATIVOS]
-Se adoptan las medidas de seguridad correspondientes, informando en su caso a las partes de los derechos que les asisten y de los trámites legales oportunos. Se instruye la presente diligencia para dejar constancia fidedigna de los extremos expuestos, a los efectos probatorios que procedan, de cuyas resultas se elevará el correspondiente Atestado o Acta si hubiere lugar a ello.
+-- Que los actuantes son comisionados/requeridos/actúan por ${origen}, para personarse en ${fLugar}, por motivo de un presunto incidente catalogado inicialmente como: ${tipo}.
 
-CONSTE Y CERTIFICO.
+-- Que a la llegada al lugar, los agentes intervinientes constatan de visu los siguientes extremos objetivos y recaban las manifestaciones in situ (diferenciando de manera estricta ambas fuentes de información):
+
+${cuerpoCentral}
+
+-- Que finalizada la actuación, se adoptan las medidas de seguridad correspondientes, quedando [PENDIENTE: ESTADO FINAL / TRASLADOS / GESTIONES CLAVE] lo que proceda.
+
+-- Que no tienen más que manifestar, por lo que una vez leída [por sí / en presencia de los actuantes], firman la presente en prueba de conformidad, en unión de la Instrucción reseñada.
+-- CONSTE Y CERTIFICO.
 
 (NOTA: Revisión humana obligatoria. Documento no oficial creado mediante simulación heurística local).`;
 
@@ -273,8 +366,21 @@ CONSTE Y CERTIFICO.
 
                             {/* Fila 3: Relato (Required) */}
                             <div>
-                                <label className="block text-sm font-semibold text-slate-700 mb-1.5 flex items-center gap-1">
-                                    Relato libre u observado <span className="text-red-500">*</span>
+                                <label className="block text-sm font-semibold text-slate-700 mb-1.5 flex items-center justify-between">
+                                    <span>Relato libre u observado <span className="text-red-500">*</span></span>
+                                    {speechSupported && (
+                                        <button
+                                            type="button"
+                                            onClick={handleToggleListen}
+                                            className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold transition-all ${isListening ? 'bg-red-100 text-red-600 animate-pulse ring-1 ring-red-400 shadow-[0_0_10px_rgba(239,68,68,0.3)]' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
+                                        >
+                                            {isListening ? (
+                                                <><MicOff className="w-3.5 h-3.5" /> Detener dictado</>
+                                            ) : (
+                                                <><Mic className="w-3.5 h-3.5" /> Dictar relato (Voz)</>
+                                            )}
+                                        </button>
+                                    )}
                                 </label>
                                 <textarea
                                     ref={relatoRef}
@@ -463,18 +569,22 @@ CONSTE Y CERTIFICO.
 
             </div>
 
-            {/* Nuevo Bloque Continuación GPT Oficial */}
-            <div className="w-full flex flex-col items-center mt-8 pb-12 animate-in fade-in duration-700 delay-300">
-                <button
-                    onClick={scrollToCta}
-                    className="flex flex-col items-center gap-2 text-slate-400 hover:text-brand-primary transition-all cursor-pointer mb-8 p-3 rounded-xl hover:bg-slate-50 group hover:scale-105 active:scale-95"
-                    aria-label="Ir al GPT Público"
-                >
-                    <span className="text-sm font-semibold tracking-wide uppercase">Continúa abajo con el GPT público</span>
-                    <ArrowDown className="w-6 h-6 animate-bounce text-slate-300 group-hover:text-brand-primary" />
-                </button>
+            {/* Zonas de CTA */}
+            <div className="w-full flex flex-col items-center mt-6 animate-in fade-in duration-700 delay-300">
 
-                <div id="demo-cta-gpt" className="w-full max-w-4xl bg-[#0b1120] border border-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl relative overflow-hidden group">
+                {/* Zona Inmediatamente Debajo del Borrador */}
+                <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-slate-500 mb-12 bg-slate-50 border border-slate-200 px-6 py-3 rounded-full shadow-sm">
+                    <button onClick={scrollToCta} className="text-brand-primary font-semibold hover:text-brand-dark transition-colors flex items-center gap-1.5" aria-label="Ir al CTA abajo">
+                        <ArrowDown className="w-4 h-4" /> Ampliar funcionales
+                    </button>
+                    <span className="hidden sm:inline">·</span>
+                    <a href={gptUrl} target="_blank" rel="noopener noreferrer" className="font-medium hover:text-brand-primary transition-colors flex items-center gap-1.5">
+                        <ExternalLink className="w-4 h-4" /> Abrir GPT público
+                    </a>
+                </div>
+
+                {/* Zona Final - CTA Principal */}
+                <div id="demo-cta-gpt" className="w-full max-w-4xl bg-[#0b1120] border border-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl relative overflow-hidden group mb-12">
                     <div className="absolute inset-0 bg-brand-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
                     <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
 
@@ -485,7 +595,7 @@ CONSTE Y CERTIFICO.
                             </div>
                             <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-tight">Usa el motor avanzado en ChatGPT</h3>
                             <p className="text-slate-400 text-sm sm:text-[15px] leading-relaxed max-w-xl">
-                                La prueba local heurística está limitada. El verdadero <strong>Atestados Fast</strong> reside en un <span className="text-slate-200 font-medium">GPT público y especializado</span> que interactúa dinámicamente contigo, conoce normativa actualizada y estructura atestados formales completos.
+                                La prueba local heurística está limitada a estructurar variables básicas. El verdadero <strong>Atestados Fast</strong> reside en un <span className="text-slate-200 font-medium">GPT público y especializado</span> que interactúa dinámicamente contigo, conoce normativa actualizada y estructura atestados formales completos.
                             </p>
                         </div>
 
