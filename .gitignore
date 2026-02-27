@@ -34,3 +34,9 @@ atestados-fast-repo/
 # TypeScript build cache
 *.tsbuildinfo
 
+
+# Local clones / temporales
+atestados-fast-repo/
+# TypeScript build cache
+*.tsbuildinfo
+
