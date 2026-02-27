@@ -29,3 +29,8 @@ yarn-error.log*
 
 # vercel
 .vercel
+# Local clones / temporales
+atestados-fast-repo/
+# TypeScript build cache
+*.tsbuildinfo
+
