@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { Presentation, Copy, Check, FileText, Loader2, AlertCircle, ChevronDown, ChevronRight, ArrowDown, ExternalLink, Mic, MicOff } from 'lucide-react';
+import { Presentation, Copy, Check, FileText, Loader2, AlertCircle, ChevronDown, ChevronRight, ArrowDown, ExternalLink, Mic, MicOff, Plus, Trash2 } from 'lucide-react';
 
 export default function DemoSimulator() {
     const [formData, setFormData] = useState({
@@ -9,7 +9,7 @@ export default function DemoSimulator() {
         lugar: '',
         fecha: '',
         relato: '',
-        participantes: '',
+        participantes: [] as { id: string, rol: string, datos: string }[],
         pruebas: {
             testifical: false,
             documental: false,
@@ -30,6 +30,28 @@ export default function DemoSimulator() {
 
     const [resultadoContext, setResultadoContext] = useState<any>(null);
     const [copiedSection, setCopiedSection] = useState<string | null>(null);
+
+    // Gestor de Roles
+    const addRole = (rol: string) => {
+        setFormData(prev => ({
+            ...prev,
+            participantes: [...prev.participantes, { id: Math.random().toString(36).substring(7), rol, datos: '' }]
+        }));
+    };
+
+    const removeRole = (id: string) => {
+        setFormData(prev => ({
+            ...prev,
+            participantes: prev.participantes.filter(p => p.id !== id)
+        }));
+    };
+
+    const updateRoleData = (id: string, datos: string) => {
+        setFormData(prev => ({
+            ...prev,
+            participantes: prev.participantes.map(p => p.id === id ? { ...p, datos } : p)
+        }));
+    };
 
     // Speech Recognition State
     const [isListening, setIsListening] = useState(false);
@@ -126,6 +148,7 @@ export default function DemoSimulator() {
 
         const lowerRelato = relato.toLowerCase();
         const hasManifestaciones = lowerRelato.includes('dijo') || lowerRelato.includes('manifiest') || lowerRelato.includes('refiere') || lowerRelato.includes('indic');
+        const hasDetenidoEnRoles = participantes.some(p => p.rol.toLowerCase().includes('autor') || p.rol.toLowerCase().includes('investigado') || p.datos.toLowerCase().includes('detenid'));
 
         const flags = {
             lesiones: lowerRelato.includes('lesion') || lowerRelato.includes('herid') || lowerRelato.includes('sangre') || lowerRelato.includes('golpe') || pruebas.parte_medico,
@@ -134,11 +157,11 @@ export default function DemoSimulator() {
             patrimonio: lowerRelato.includes('robo') || lowerRelato.includes('hurto') || lowerRelato.includes('sustra') || lowerRelato.includes('cartera') || lowerRelato.includes('móvil'),
             huida: lowerRelato.includes('huida') || lowerRelato.includes('huy') || lowerRelato.includes('fuga'),
             cctv: lowerRelato.includes('camara') || lowerRelato.includes('cámara') || lowerRelato.includes('grabación') || lowerRelato.includes('video') || pruebas.cctv,
-            detenido: lowerRelato.includes('detenid') || lowerRelato.includes('arrest') || (participantes.toLowerCase().includes('detenid')),
+            detenido: lowerRelato.includes('detenid') || lowerRelato.includes('arrest') || hasDetenidoEnRoles,
         };
 
-        const fLugar = lugar || '[PENDIENTE: LUGAR EXACTO]';
-        const fFecha = fecha || '[PENDIENTE: FECHA Y HORA]';
+        const fLugar = lugar.trim() !== '' ? lugar : '[PENDIENTE: LUGAR EXACTO]';
+        const fFecha = fecha.trim() !== '' ? fecha : '[PENDIENTE: FECHA Y HORA]';
 
         // A) Resumen
         let resumen = `Intervención policial por ${tipo} en ${fLugar}. `;
@@ -160,9 +183,9 @@ export default function DemoSimulator() {
 
         // C) Huecos de información
         const huecos = [];
-        if (!lugar) huecos.push("Falta concretar lugar exacto de los hechos (vía, número, poblado).");
-        if (!fecha) huecos.push("Falta concretar día y hora precisa de la intervención.");
-        if (!participantes) huecos.push("No se rellenaron 'Personas implicadas'. La comparecencia omitirá este bloque estructuralmente.");
+        if (fLugar.includes('PENDIENTE')) huecos.push("Falta concretar lugar exacto de los hechos (vía, número, poblado).");
+        if (fFecha.includes('PENDIENTE')) huecos.push("Falta concretar día y hora precisa de la intervención.");
+        if (participantes.length === 0) huecos.push("No se añadieron 'Personas implicadas' específicas (Víctimas, Autores, etc). Omitido estructuralmente.");
         if (flags.lesiones && !pruebas.parte_medico) huecos.push("Se mencionan lesiones pero no consta Parte Médico asegurado como prueba.");
         if (flags.arma && !pruebas.arma) huecos.push("Se menciona arma pero no se ha marcado como indicio intervenido preliminarmente.");
         if (flags.patrimonio && !hasManifestaciones) huecos.push("En actos patrimoniales es imperativo detallar la declaración de la víctima (tipo de efecto, tasación, autoría).");
@@ -187,18 +210,25 @@ export default function DemoSimulator() {
         if (pruebas.documental || pruebas.grafica || pruebas.cctv || pruebas.parte_medico) opcionales += "\n-- APORTAN / SE INCORPORA: Documentación anexa y reportes de interés.\n";
 
         // SMART OMISSIONS: If the block is strictly empty, we do not insert [PENDIENTE], we omit it for a cleaner read.
-        const pParticipantes = participantes ? `\n-- Que intervinientes y actuantes identifican a las siguientes personas (filiación / roles):\n  ${participantes}` : "";
+        let pParticipantes = "";
+        if (participantes.length > 0) {
+            pParticipantes = "-- Que intervinientes y actuantes identifican a las siguientes personas (filiación / roles):\n";
+            participantes.forEach(p => {
+                pParticipantes += `*** [${p.rol.toUpperCase()}] ${p.datos || '[PENDIENTE: DATOS DE FILIACIÓN]'}\n`;
+            });
+            pParticipantes = pParticipantes.trim();
+        }
 
         const activePruebas = Object.entries(pruebas).filter(([_, v]) => v).map(([k]) => k.replace('_', ' ').toUpperCase());
         const pPruebasStr = activePruebas.length > 0 ? activePruebas.join(', ') : '';
-        let pPruebasSection = pPruebasStr ? `\n-- Que se recogen, aseguran o da cuenta de los siguientes indicios y pruebas: ${pPruebasStr}.` : "";
+        let pPruebasSection = pPruebasStr ? `-- Que se recogen, aseguran o da cuenta de los siguientes indicios y pruebas: ${pPruebasStr}.` : "";
         if (notasPruebas && pPruebasSection) pPruebasSection += ` Detalles: ${notasPruebas}`;
-        if (notasPruebas && !pPruebasSection) pPruebasSection += `\n-- Que se reseñan las siguientes pruebas físicas / indicios: ${notasPruebas}`;
+        if (notasPruebas && !pPruebasSection) pPruebasSection += `-- Que se reseñan las siguientes pruebas físicas / indicios: ${notasPruebas}`;
 
-        const pObservaciones = observaciones ? `\n-- Que se realizan las siguientes gestiones operativas adicionales: ${observaciones}` : "";
+        const pObservaciones = observaciones ? `-- Que se realizan las siguientes gestiones operativas adicionales: ${observaciones}` : "";
 
         let origen = "[PENDIENTE: ORIGEN (aviso Sala/requerimiento/prevención)]";
-        if (lowerRelato.includes('aviso') || lowerRelato.includes('sala') || lowerRelato.includes('091') || lowerRelato.includes('112')) origen = "aviso de la Sala/CIMACC";
+        if (lowerRelato.includes('aviso') || lowerRelato.includes('sala') || lowerRelato.includes('091') || lowerRelato.includes('112')) origen = "el aviso de la Sala/CIMACC";
         else if (lowerRelato.includes('requerid') || lowerRelato.includes('ciudadan')) origen = "requerimiento ciudadano";
         else if (lowerRelato.includes('patrulla') || lowerRelato.includes('prevención')) origen = "labores de prevención";
 
@@ -209,21 +239,26 @@ export default function DemoSimulator() {
             pObservaciones
         ].filter(b => b.trim() !== ""); // Removes empty nodes intelligently
 
-        const cuerpoCentral = rawBlocks.join('\n');
+        const cuerpoCentral = rawBlocks.join('\n\n');
 
-        const comparecencia = `En [PENDIENTE: LOCALIDAD], siendo las [PENDIENTE: HORA] horas [PENDIENTE: MINUTOS] minutos del día [PENDIENTE: FECHA], ante la Instrucción arriba reseñada.
+        const comparecencia = `DILIGENCIA DE EXPOSICIÓN Y CONSTANCIA DE HECHOS
 
--- COMPARECEN: Los funcionarios de [PENDIENTE: CUERPO], con carnets/TIP profesionales números [PENDIENTE: LISTA], destinados en [PENDIENTE: UNIDAD/DEPENDENCIA], de servicio con el indicativo [PENDIENTE: INDICATIVO], quienes comparecen...
-${opcionales}
--- MANIFIESTAN: Que comparecen para dar cuenta de los hechos ocurridos el ${fFecha}, en ${fLugar}, y que se detallan a continuación.
+En [PENDIENTE: DEPENDENCIA POLICIAL O SEDE], siendo las [PENDIENTE: HORA DE CONFECCIÓN] horas del día de la fecha, los Agentes de la Autoridad con carnet profesional [PENDIENTE: NIP/TIP 1] y [PENDIENTE: NIP/TIP 2], prestando servicio para la prevención de la Seguridad Ciudadana, mediante la presente hacen constar:
 
--- Que los actuantes son comisionados/requeridos/actúan por ${origen}, para personarse en ${fLugar}, por motivo de un presunto incidente catalogado inicialmente como: ${tipo}.
+PRIMERO. - ORIGEN DE LA INTERVENCIÓN
+Que siendo las ${fFecha}, la dotación actuante es requerida/se persona prestando servicio en la zona, ocurriendo los hechos en ${fLugar}, por motivo de un presunto incidente catalogado inicialmente como: ${tipo}.
+El indicativo actuante fue comisionado por ${origen}.
 
--- Que a la llegada al lugar, los agentes intervinientes constatan de visu los siguientes extremos objetivos y recaban las manifestaciones in situ (diferenciando de manera estricta ambas fuentes de información):
+SEGUNDO. - DESARROLLO DE LA ACTUACIÓN Y MANIFESTACIONES
+A la llegada al lugar, los agentes intervinientes constatan de visu los siguientes extremos objetivos y recaban las manifestaciones in situ que a continuación se detallan (diferenciando de manera estricta ambas fuentes de información):
 
 ${cuerpoCentral}
 
--- Que finalizada la actuación, se adoptan las medidas de seguridad correspondientes, quedando [PENDIENTE: ESTADO FINAL / TRASLADOS / GESTIONES CLAVE] lo que proceda.
+TERCERO. - ACTUACIONES PRACTICADAS Y FINALIZACIÓN
+[PENDIENTE: DETALLAR TRASLADOS, LECTURAS DE DERECHOS SI PROCEDEN, GESTIONES CON SALA U OTROS INDICATIVOS]
+Se adoptan las medidas de seguridad correspondientes, informando en su caso a las partes de los derechos que les asisten y de los trámites legales oportunos. Se instruye la presente diligencia para dejar constancia fidedigna de los extremos expuestos, a los efectos probatorios que procedan, de cuyas resultas se elevará el correspondiente Atestado o Acta si hubiere lugar a ello.
+
+CONSTE Y CERTIFICO.
 
 -- Que no tienen más que manifestar, por lo que una vez leída [por sí / en presencia de los actuantes], firman la presente en prueba de conformidad, en unión de la Instrucción reseñada.
 -- CONSTE Y CERTIFICO.
@@ -405,16 +440,40 @@ ${cuerpoCentral}
                                 )}
                             </div>
 
-                            {/* Fila 4: Participantes */}
-                            <div>
-                                <label className="block text-sm font-semibold text-slate-700 mb-1.5">Personas implicadas <span className="text-slate-400 font-normal text-xs">(Roles, opcional)</span></label>
-                                <textarea
-                                    rows={2}
-                                    placeholder="Ej: Víctima (varón contusionado), Testigo, Investigado (indocumentado)..."
-                                    className="w-full border border-slate-300 rounded-lg p-2.5 bg-slate-50 outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all text-sm resize-none hover:border-slate-400"
-                                    value={formData.participantes}
-                                    onChange={(e) => setFormData({ ...formData, participantes: e.target.value })}
-                                ></textarea>
+                            {/* Fila 4: Participantes Generador de Roles */}
+                            <div className="bg-slate-50/50 p-4 rounded-xl border border-slate-200">
+                                <label className="block text-sm font-semibold text-slate-700 mb-3">Personas implicadas <span className="text-slate-400 font-normal text-xs">(Añade roles dinámicamente)</span></label>
+
+                                <div className="flex flex-wrap gap-2 mb-4">
+                                    <button type="button" onClick={() => addRole('Víctima')} className="text-[11px] font-bold tracking-wide uppercase px-3 py-1.5 rounded bg-blue-100 text-blue-700 hover:bg-blue-200 flex items-center gap-1 transition-colors"><Plus className="w-3.5 h-3.5" /> Víctima</button>
+                                    <button type="button" onClick={() => addRole('Autor/Investigado')} className="text-[11px] font-bold tracking-wide uppercase px-3 py-1.5 rounded bg-red-100 text-red-700 hover:bg-red-200 flex items-center gap-1 transition-colors"><Plus className="w-3.5 h-3.5" /> Autor</button>
+                                    <button type="button" onClick={() => addRole('Testigo')} className="text-[11px] font-bold tracking-wide uppercase px-3 py-1.5 rounded bg-amber-100 text-amber-700 hover:bg-amber-200 flex items-center gap-1 transition-colors"><Plus className="w-3.5 h-3.5" /> Testigo</button>
+                                    <button type="button" onClick={() => addRole('Perjudicado')} className="text-[11px] font-bold tracking-wide uppercase px-3 py-1.5 rounded bg-emerald-100 text-emerald-700 hover:bg-emerald-200 flex items-center gap-1 transition-colors"><Plus className="w-3.5 h-3.5" /> Perjudicado</button>
+                                </div>
+
+                                {formData.participantes.length > 0 && (
+                                    <div className="space-y-3">
+                                        {formData.participantes.map((p, idx) => (
+                                            <div key={p.id} className="flex gap-2 items-start animate-in fade-in slide-in-from-left-2 duration-300">
+                                                <div className="flex-1">
+                                                    <div className="flex items-center justify-between mb-1">
+                                                        <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Rol: {p.rol}</span>
+                                                    </div>
+                                                    <input
+                                                        type="text"
+                                                        placeholder={`DNI, Nombre, Apellidos, circunstancias del ${p.rol.toLowerCase()}...`}
+                                                        className="w-full border border-slate-300 rounded-lg p-2.5 bg-white outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all text-sm"
+                                                        value={p.datos}
+                                                        onChange={(e) => updateRoleData(p.id, e.target.value)}
+                                                    />
+                                                </div>
+                                                <button type="button" onClick={() => removeRole(p.id)} className="shrink-0 p-2.5 mt-5 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors border border-transparent hover:border-red-100" title="Eliminar rol">
+                                                    <Trash2 className="w-4 h-4" />
+                                                </button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
 
                             {/* Fila 5: Pruebas */}

@@ -24,12 +24,10 @@ export default function Hero() {
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
                     <a
-                        href={gptUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href="#demo"
                         className="w-full sm:w-auto px-8 py-4 bg-brand-primary hover:bg-brand-secondary text-white rounded-xl font-bold flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-brand-primary/50"
                     >
-                        Abrir GPT Atestados
+                        Probar motor de estructuración
                         <ArrowRight className="w-5 h-5" />
                     </a>
                     <a
