@@ -7,6 +7,8 @@ import Resources from '@/components/Resources';
 import FutureTools from '@/components/FutureTools';
 import FAQ from '@/components/FAQ';
 import AdSlot from '@/components/AdSlot';
+import GptPublicCta from '@/components/GptPublicCta';
+import ScrollHintToGpt from '@/components/ScrollHintToGpt';
 
 export default function Home() {
     const adClientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
@@ -47,6 +49,8 @@ export default function Home() {
             <FAQ />
             <Resources />
             <FutureTools />
+            <GptPublicCta />
+            <ScrollHintToGpt />
         </div>
     );
 }

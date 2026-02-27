@@ -6,7 +6,6 @@ import { Menu, X, ShieldCheck } from 'lucide-react';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const gptUrl = process.env.NEXT_PUBLIC_GPT_URL || '#';
 
     const NavLinks = () => (
         <>
@@ -31,14 +30,6 @@ export default function Navbar() {
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center gap-8">
                     <NavLinks />
-                    <a
-                        href={gptUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-brand-dark hover:bg-slate-800 text-white px-5 py-2.5 rounded-full font-semibold shadow-md transition-all transform hover:-translate-y-0.5"
-                    >
-                        Abrir GPT
-                    </a>
                 </div>
 
                 {/* Mobile menu button */}
@@ -55,15 +46,6 @@ export default function Navbar() {
             {isOpen && (
                 <div className="md:hidden bg-white border-b border-slate-200 px-4 py-6 flex flex-col gap-6 shadow-xl">
                     <NavLinks />
-                    <a
-                        href={gptUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-brand-primary text-white text-center px-4 py-3 rounded-xl font-bold"
-                        onClick={() => setIsOpen(false)}
-                    >
-                        Abrir GPT Atestados
-                    </a>
                 </div>
             )}
         </nav>

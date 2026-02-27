@@ -2,7 +2,7 @@ export default function PrivacyPage() {
     return (
         <div className="container mx-auto max-w-4xl px-4 py-16 prose prose-slate">
             <h1 className="text-3xl font-bold mb-6 text-brand-dark">Política de Privacidad</h1>
-            <p className="mb-4">Efectiva desde: Enero de 2024</p>
+            <p className="mb-4">Efectiva desde: Febrero de 2026</p>
 
             <h2 className="text-2xl font-semibold mt-8 mb-4">1. Identidad del responsable</h2>
             <p className="mb-4">En cumplimiento de la legislación vigente y del Reglamento General de Protección de Datos (RGPD), se informa que este sitio web "Atestados Fast" opera como un portal puramente informativo. Los datos que voluntariamente decida enviar el usuario a través de enlaces externos de terceros (por ejemplo, a simuladores o bots de IA operados por OpenAI) quedan sometidos a la política de privacidad de dichas plataformas.</p>
@@ -18,7 +18,7 @@ export default function PrivacyPage() {
             <p className="mb-4"><strong>Aviso Crucial:</strong> En calidad de Agente de la Autoridad, usted asume la responsabilidad legal respecto a los datos que incluye en herramientas de IA (como ChatGPT externo). Se prohíbe introducir en herramientas de terceros datos de carácter personal, números de filiación, matrículas, antecedentes y cualquier información sujeta a reservas de la LOPDGDD. La finalidad de la IA es generar la <em>estructura y el relato genérico</em>, no albergar datos sujetos a privacidad.</p>
 
             <h2 className="text-2xl font-semibold mt-8 mb-4">5. Ejercicio de derechos y contacto</h2>
-            <p className="mb-4">Al no recabar datos personales de forma directa en bases de datos propias, el ejercicio de derechos ARCO-POL debe dirigirse a los proveedores de los servicios integrados (Google, OpenAI). No obstante, para cualquier queja, sugerencia o reclamación relacionada con la privacidad general de la web, puede contactarnos en: <strong>{process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'contacto@ejemplo.com'}</strong>.</p>
+            <p className="mb-4">Al no recabar datos personales de forma directa en bases de datos propias, el ejercicio de derechos ARCO-POL debe dirigirse a los proveedores de los servicios integrados (Google, OpenAI). No obstante, para cualquier queja, sugerencia o reclamación relacionada con la privacidad general de la web, puede contactarnos en: <strong>{process.env.NEXT_PUBLIC_CONTACT_EMAIL || ''}</strong>.</p>
         </div>
     );
 }
