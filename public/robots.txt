@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://atestados.dunajhon.com/sitemap.xml
