@@ -631,16 +631,7 @@ CONSTE Y CERTIFICO.
             {/* Zonas de CTA */}
             <div className="w-full flex flex-col items-center mt-6 animate-in fade-in duration-700 delay-300">
 
-                {/* Zona Inmediatamente Debajo del Borrador */}
-                <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-slate-500 mb-12 bg-slate-50 border border-slate-200 px-6 py-3 rounded-full shadow-sm">
-                    <button onClick={scrollToCta} className="text-brand-primary font-semibold hover:text-brand-dark transition-colors flex items-center gap-1.5" aria-label="Ir al CTA abajo">
-                        <ArrowDown className="w-4 h-4" /> Ampliar funcionales
-                    </button>
-                    <span className="hidden sm:inline">·</span>
-                    <a href={gptUrl} target="_blank" rel="noopener noreferrer" className="font-medium hover:text-brand-primary transition-colors flex items-center gap-1.5">
-                        <ExternalLink className="w-4 h-4" /> Abrir GPT público
-                    </a>
-                </div>
+
 
                 {/* Zona Final - CTA Principal */}
                 <div id="demo-cta-gpt" className="w-full max-w-4xl bg-[#0b1120] border border-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl relative overflow-hidden group mb-12">

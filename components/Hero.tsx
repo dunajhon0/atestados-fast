@@ -1,4 +1,4 @@
-import { ArrowRight, FileText } from 'lucide-react';
+import { ArrowRight, FileText, AlertTriangle } from 'lucide-react';
 
 export default function Hero() {
     const gptUrl = process.env.NEXT_PUBLIC_GPT_URL || '#';
@@ -40,7 +40,9 @@ export default function Hero() {
                 </div>
 
                 <p className="text-sm text-slate-400 max-w-xl mx-auto flex items-center justify-center gap-2">
-                    <span className="block border border-slate-600 rounded p-0.5 text-[0.6rem] font-mono leading-none">⚠️</span>
+                    <span className="block border border-amber-500/30 bg-amber-500/10 rounded p-1 text-amber-500 flex items-center justify-center">
+                        <AlertTriangle className="w-3.5 h-3.5" />
+                    </span>
                     Recuerda: Uso responsable. Toda IA requiere revisión humana exhaustiva. No incluyas datos reales sensibles.
                 </p>
             </div>
