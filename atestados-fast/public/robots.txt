@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://atestadosfast.dunajhon.com/sitemap.xml
