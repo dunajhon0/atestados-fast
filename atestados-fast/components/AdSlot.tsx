@@ -19,8 +19,8 @@ export default function AdSlot({ clientId, slotId, format = 'auto', layoutKey, s
             const consentText = localStorage.getItem('cookie-consent-v1');
             const hasAdsConsent = consentText ? JSON.parse(consentText).ads : false;
 
-            // Only push ad if we have consent
-            if (hasAdsConsent && window && !(window as any).adsbygoogleSetup) {
+            // Only push ad if we have consent. Each slot must call push() independently.
+            if (hasAdsConsent && window) {
                 ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
             }
         } catch (err) {
