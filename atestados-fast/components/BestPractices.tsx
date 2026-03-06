@@ -14,7 +14,7 @@ export default function BestPractices() {
                         <div>
                             <h4 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2 border-b pb-2"><Check className="text-green-500" /> Así Sí (Aceptable)</h4>
                             <div className="bg-slate-50 p-4 rounded-lg text-sm border-l-4 border-green-500 font-mono text-slate-700 italic">
-                                "Sobre las 22:30, la dotación actuante es requerida en un bar próximo. Al llegar, nos entrevistamos con [TESTIGO 1], empleada del local, quien nos expone visualmente nerviosa que un individuo ha forcejeado..."
+                                &quot;Sobre las 22:30, la dotación actuante es requerida en un bar próximo. Al llegar, nos entrevistamos con [TESTIGO 1], empleada del local, quien nos expone visualmente nerviosa que un individuo ha forcejeado...&quot;
                             </div>
                             <p className="text-xs text-slate-500 mt-2">No se detallan datos reales, se prioriza claridad aséptica y anonimato durante la redacción asistida.</p>
                         </div>
@@ -22,7 +22,7 @@ export default function BestPractices() {
                         <div>
                             <h4 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2 border-b pb-2"><FileWarning className="text-red-500" /> Así NO (Ilegalidad/Riesgo)</h4>
                             <div className="bg-slate-50 p-4 rounded-lg text-sm border-l-4 border-red-500 font-mono text-slate-700 italic">
-                                "Resulta que hemos detenido a Juan Romero Pérez con DNI XXXXXXX-Y. Tenía medio gramo en el coche matrícula 2222-BBB, su cuñado gritaba..."
+                                &quot;Resulta que hemos detenido a Juan Romero Pérez con DNI XXXXXXX-Y. Tenía medio gramo en el coche matrícula 2222-BBB, su cuñado gritaba...&quot;
                             </div>
                             <p className="text-xs text-slate-500 mt-2">Nunca envíes a un motor externo datos personales, de matrículas o afiliaciones explícitas que vulneren directamente el derecho de reserva de datos y la cadena de custodia.</p>
                         </div>

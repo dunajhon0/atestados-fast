@@ -563,7 +563,7 @@ CONSTE Y CERTIFICO.
                                         <FileText className="w-7 h-7 text-slate-500" />
                                     </div>
                                     <span className="text-slate-300 font-semibold mb-2">Sin datos de intervención</span>
-                                    <p className="text-slate-500 text-sm max-w-sm leading-relaxed">Rellena el formulario y haz clic en "Procesar Intervención" para activar el motor de estructuración y generar el borrador policial.</p>
+                                    <p className="text-slate-500 text-sm max-w-sm leading-relaxed">Rellena el formulario y haz clic en &quot;Procesar Intervención&quot; para activar el motor de estructuración y generar el borrador policial.</p>
                                 </div>
                             ) : (
                                 <div className="space-y-4 animate-in fade-in zoom-in-95 duration-500">
@@ -589,7 +589,7 @@ CONSTE Y CERTIFICO.
                                     </AccordionBlock>
 
                                     <AccordionBlock title="D. Encaje Jurídico">
-                                        <p className="text-slate-400 italic font-serif leading-relaxed text-[13px]">"{resultadoContext.encaje}"</p>
+                                        <p className="text-slate-400 italic font-serif leading-relaxed text-[13px]">&quot;{resultadoContext.encaje}&quot;</p>
                                     </AccordionBlock>
 
                                     <div className="mt-8 border border-brand-primary/20 rounded-xl overflow-hidden shadow-xl shadow-brand-primary/5">

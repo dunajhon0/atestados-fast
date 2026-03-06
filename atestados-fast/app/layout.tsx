@@ -2,9 +2,10 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import SiteHeader from '@/components/layout/SiteHeader';
+import SiteFooter from '@/components/layout/SiteFooter';
 import ConsentManager from '@/components/ConsentManager';
+import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/JsonLd';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -39,12 +40,14 @@ export default function RootLayout({
                 />
             </head>
             <body className={inter.className}>
-                <Navbar />
+                <SiteHeader />
                 <main className="min-h-screen pt-16">
                     {children}
                 </main>
-                <Footer />
+                <SiteFooter />
                 <ConsentManager />
+                <OrganizationJsonLd />
+                <WebSiteJsonLd />
             </body>
         </html>
     );
