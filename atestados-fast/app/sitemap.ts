@@ -16,10 +16,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/legal', priority: 0.5, changeFrequency: 'yearly' as const },
   ];
 
-  return routes.map((route) => ({
-    url: `${baseUrl}${route.path}`,
-    lastModified: new Date(),
-    changeFrequency: route.changeFrequency,
-    priority: route.priority,
-  }));
+  return routes.map((route) => {
+    // Si la ruta es vacía (root), el slash ya va implícito, de lo contrario lo añadimos
+    const trailingRoute = route.path === '' ? '/' : `${route.path}/`;
+    return {
+      url: `${baseUrl}${trailingRoute}`,
+      lastModified: new Date(),
+      changeFrequency: route.changeFrequency,
+      priority: route.priority,
+    };
+  });
 }
