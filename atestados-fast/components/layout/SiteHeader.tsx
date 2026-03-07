@@ -87,28 +87,24 @@ export default function SiteHeader() {
 
                 {/* Right Area: Main CTA */}
                 <div className="hidden lg:flex items-center flex-shrink-0">
-                    <a
-                        href={process.env.NEXT_PUBLIC_GPT_URL || "#"}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <Link
+                        href="https://atestadosfast.dunajhon.com/demo/"
                         className="group flex-shrink-0 flex items-center gap-2 bg-[#09090B] hover:bg-[#18181B] text-white px-7 py-3 rounded-xl font-bold text-sm xl:text-[15px] transition-all duration-300 shadow-[0_8px_16px_-6px_rgba(9,9,11,0.4)] hover:shadow-[0_12px_20px_-8px_rgba(9,9,11,0.6)] hover:-translate-y-0.5 active:scale-95"
                     >
                         <TerminalSquare className="w-4 h-4 text-blue-400 group-hover:text-blue-300 transition-colors" />
-                        Iniciar Consola
-                    </a>
+                        Hacer atestado
+                    </Link>
                 </div>
 
                 {/* Mobile controls */}
                 <div className="flex lg:hidden items-center gap-3">
-                    <a
-                        href={process.env.NEXT_PUBLIC_GPT_URL || "#"}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <Link
+                        href="https://atestadosfast.dunajhon.com/demo/"
                         className="flex items-center justify-center bg-[#09090B] hover:bg-[#18181B] text-white w-10 h-10 rounded-xl transition-all shadow-md active:scale-95"
-                        aria-label="Abrir Consola"
+                        aria-label="Hacer atestado"
                     >
                         <TerminalSquare className="w-[18px] h-[18px] text-blue-400" />
-                    </a>
+                    </Link>
 
                     <button
                         className="w-10 h-10 flex items-center justify-center text-slate-700 bg-slate-100 hover:bg-slate-200 active:bg-slate-300 transition-colors rounded-xl"
