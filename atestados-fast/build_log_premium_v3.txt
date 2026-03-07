@@ -1,0 +1,22 @@
+
+> atestados-fast@0.1.0 build
+> next build
+
+  Ôû▓ Next.js 14.2.3
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+ Ô£ô Compiled successfully
+   Linting and checking validity of types ...
+Failed to compile.
+
+./components/DemoSimulator.tsx:564:5
+Type error: Cannot find name 'setFormData'. Did you mean 'FormData'?
+
+  562 |         datos: ''
+  563 |     };
+> 564 |     setFormData(prev => ({
+      |     ^
+  565 |         ...prev,
+  566 |         participantes: [...prev.participantes, newParticipant]
+  567 |     }));

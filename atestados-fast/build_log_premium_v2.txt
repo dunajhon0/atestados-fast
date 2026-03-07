@@ -1,0 +1,32 @@
+
+> atestados-fast@0.1.0 build
+> next build
+
+  Ôû▓ Next.js 14.2.3
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+Failed to compile.
+
+./app/demo/page.tsx
+Error: 
+  x You are attempting to export "metadata" from a component marked with "use client", which is disallowed. Either remove the export, or the "use client" directive. Read more: https://nextjs.org/
+  | docs/getting-started/react-essentials#the-use-client-directive
+  | 
+  | 
+    ,-[C:\Users\herme\OneDrive\Escritorio\proyectos\PROYECTOS ANTIGRAVITY\Web atestados fast\atestados-fast\app\demo\page.tsx:5:1]
+  5 | import { ToolLayout } from '@/components/layout/ToolLayout';
+  6 | import { AnonymizerTool } from '@/components/tools/AnonymizerTool';
+  7 | 
+  8 | export const metadata: Metadata = {
+    :              ^^^^^^^^
+  9 |     title: 'Demo y Simulador | Atestados Fast',
+ 10 |     description: 'Motor de redacci├│n interactivo para la estructuraci├│n de atestados policiales. Pru├®balo en vivo con datos ficticios.',
+ 10 | };
+    `----
+
+Import trace for requested module:
+./app/demo/page.tsx
+
+
+> Build failed because of webpack errors
