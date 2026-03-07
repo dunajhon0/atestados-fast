@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, TerminalSquare } from "lucide-react";
 
 export const navLinks = [
-    { href: "/como-funciona", label: "El Método" },
+    { href: "/como-funciona", label: "Cómo Funciona" },
     { href: "/buenas-practicas", label: "Buenas Prácticas" },
     { href: "/plantillas", label: "Plantillas" },
     { href: "/herramientas", label: "Herramientas" },
