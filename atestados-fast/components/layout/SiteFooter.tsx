@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ShieldAlert } from "lucide-react";
 
 export default function SiteFooter() {
@@ -11,10 +12,15 @@ export default function SiteFooter() {
 
                     {/* Brand & Disclaimer */}
                     <div className="md:col-span-2">
-                        <h3 className="font-bold text-xl text-white mb-4 flex items-center gap-2">
-                            <ShieldAlert className="text-brand-primary w-6 h-6" />
-                            Atestados Fast
-                        </h3>
+                        <Link href="/" className="inline-block mb-4 transition-transform hover:scale-105">
+                            <Image
+                                src="/logo.png"
+                                alt="Atestados Fast Logo"
+                                width={180}
+                                height={54}
+                                className="object-contain h-10 sm:h-12 w-auto brightness-0 invert opacity-90"
+                            />
+                        </Link>
                         <p className="text-sm max-w-sm mb-6 leading-relaxed text-slate-400">
                             Iniciativa para agilizar la redacción estructurada. No oficial. Herramienta orientativa basada en Inteligencia Artificial y utilidades locales para uso responsable por agentes.
                         </p>

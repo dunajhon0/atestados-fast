@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, ShieldCheck, ExternalLink } from "lucide-react";
+import { Menu, X, ExternalLink } from "lucide-react";
 
 export const navLinks = [
     { href: "/", label: "Portal" },
@@ -27,13 +28,15 @@ export default function SiteHeader() {
         <nav className="fixed w-full bg-white/95 backdrop-blur-md z-50 border-b border-slate-200 shadow-sm">
             <div className="container mx-auto px-4 h-16 flex justify-between items-center">
                 {/* Brand Logo */}
-                <Link href="/" className="flex items-center gap-2 group" onClick={handleClose}>
-                    <div className="bg-brand-primary p-2 rounded-lg group-hover:bg-brand-secondary transition-colors">
-                        <ShieldCheck className="text-white w-5 h-5 sm:w-6 sm:h-6" />
-                    </div>
-                    <span className="font-bold text-lg sm:text-xl tracking-tight text-brand-dark hidden sm:block">
-                        Atestados Fast
-                    </span>
+                <Link href="/" className="flex items-center group transition-transform hover:scale-105" onClick={handleClose}>
+                    <Image
+                        src="/logo.png"
+                        alt="Atestados Fast Logo"
+                        width={200}
+                        height={60}
+                        className="object-contain h-10 w-auto sm:h-14"
+                        priority
+                    />
                 </Link>
 
                 {/* Desktop Menu */}
@@ -44,8 +47,8 @@ export default function SiteHeader() {
                                 key={link.href}
                                 href={link.href}
                                 className={`text-sm font-medium transition-colors ${pathname === link.href
-                                        ? "text-brand-primary font-semibold"
-                                        : "text-slate-600 hover:text-brand-primary"
+                                    ? "text-brand-primary font-semibold"
+                                    : "text-slate-600 hover:text-brand-primary"
                                     }`}
                             >
                                 {link.label}
@@ -98,8 +101,8 @@ export default function SiteHeader() {
                                 href={link.href}
                                 onClick={handleClose}
                                 className={`p-4 rounded-xl text-base font-medium transition-colors ${pathname === link.href
-                                        ? "bg-brand-primary/10 text-brand-primary font-semibold"
-                                        : "text-slate-600 hover:bg-slate-50"
+                                    ? "bg-brand-primary/10 text-brand-primary font-semibold"
+                                    : "text-slate-600 hover:bg-slate-50"
                                     }`}
                             >
                                 {link.label}
