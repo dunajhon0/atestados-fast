@@ -1,0 +1,41 @@
+
+> atestados-fast@0.1.0 build
+> next build
+
+  Ôû▓ Next.js 14.2.3
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+ Ô£ô Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/15) ...
+   Generating static pages (3/15) 
+   Generating static pages (7/15) 
+   Generating static pages (11/15) 
+ Ô£ô Generating static pages (15/15)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+Ôöî Ôùï /                                    6.46 kB         105 kB
+Ôö£ Ôùï /_not-found                          871 B            88 kB
+Ôö£ Ôùï /buenas-practicas                    5.13 kB        92.3 kB
+Ôö£ Ôùï /como-funciona                       10.1 kB         101 kB
+Ôö£ Ôùï /demo                                13.5 kB         101 kB
+Ôö£ Ôùï /faq                                 3.53 kB        90.7 kB
+Ôö£ Ôùï /herramientas                        3.88 kB          91 kB
+Ôö£ Ôùï /legal                               1.56 kB        88.7 kB
+Ôö£ Ôùï /plantillas                          4.31 kB        91.5 kB
+Ôö£ Ôùï /recursos-oficiales                  2.61 kB        89.8 kB
+Ôö£ Ôùï /robots.txt                          0 B                0 B
+Ôö£ Ôùï /sitemap.xml                         0 B                0 B
+Ôöö Ôùï /sobre                               1.74 kB        88.9 kB
++ First Load JS shared by all            87.2 kB
+  Ôö£ chunks/23-bdbdd61f3aae8706.js        31.6 kB
+  Ôö£ chunks/fd9d1056-52987fed3a59fd00.js  53.6 kB
+  Ôöö other shared chunks (total)          1.95 kB
+
+
+Ôùï  (Static)  prerendered as static content
+

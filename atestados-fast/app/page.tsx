@@ -48,20 +48,20 @@ export default function Home() {
 
                         <div className="flex flex-col sm:flex-row items-stretch justify-center gap-6 mb-16 w-full px-4 sm:px-0 max-w-3xl mx-auto">
                             <Link href="/demo" className="flex-1">
-                                <Button size="lg" className="w-full h-16 text-lg rounded-2xl group relative overflow-hidden transition-all bg-white text-black hover:bg-slate-200 hover:-translate-y-1 shadow-[0_0_40px_rgba(59,130,246,0.3)]">
+                                <Button variant="ultra-contrast" size="xl" className="w-full group relative overflow-hidden transition-all shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(255,255,255,0.2)]">
                                     <div className="flex items-center justify-center gap-3 relative z-10 px-2">
-                                        <Rocket className="h-5 w-5 fill-current" />
-                                        <span className="font-black uppercase tracking-wider">Iniciar Redactor</span>
+                                        <Rocket className="h-6 w-6 fill-current" />
+                                        <span>Iniciar Redactor</span>
                                         <ChevronRight className="h-5 w-5 group-hover:translate-x-1.5 transition-transform" />
                                     </div>
                                 </Button>
                             </Link>
 
                             <a href={gptUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
-                                <Button variant="outline" size="lg" className="w-full h-16 text-lg rounded-2xl group border-white/10 bg-white/5 text-white hover:bg-white/10 transition-all hover:-translate-y-1 backdrop-blur-sm">
+                                <Button variant="outline" size="xl" className="w-full group transition-all backdrop-blur-sm">
                                     <div className="flex items-center justify-center gap-3">
-                                        <MessageSquareText className="h-5 w-5" />
-                                        <span className="font-bold tracking-tight opacity-70 group-hover:opacity-100 transition-opacity">Consola GPT Pública</span>
+                                        <MessageSquareText className="h-6 w-6 opacity-70 group-hover:opacity-100 transition-opacity" />
+                                        <span className="opacity-70 group-hover:opacity-100 transition-opacity">Consola GPT Pública</span>
                                     </div>
                                 </Button>
                             </a>
