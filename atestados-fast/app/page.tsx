@@ -75,62 +75,71 @@ export default function Home() {
                     <div className="grid md:grid-cols-3 gap-6 lg:gap-8 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 fill-mode-both">
 
                         {/* Card 1 */}
-                        <div className="group bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 text-left flex flex-col p-8 md:p-10 rounded-[18px]">
+                        <div className="group bg-white border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 flex flex-col p-8 md:p-10 rounded-[18px]">
                             {/* Icon Container */}
-                            <div className="h-14 w-14 rounded-full bg-blue-50 flex items-center justify-center mb-8 shadow-sm group-hover:bg-blue-100 transition-colors">
-                                <Zap className="h-6 w-6 text-blue-500" />
+                            <div className="h-16 w-16 mx-auto rounded-full bg-blue-50/80 flex items-center justify-center mb-8 group-hover:bg-blue-100 group-hover:scale-110 transition-all duration-500">
+                                <Zap className="h-8 w-8 text-blue-600" />
                             </div>
 
                             {/* Content */}
-                            <h3 className="text-xl font-bold text-slate-900 mb-3 tracking-tight">Empieza en 60s</h3>
-                            <p className="text-slate-500 text-sm md:text-base leading-relaxed mb-8 flex-grow">
-                                Introduce los datos básicos de tu intervención y obtén una estructura jerárquica clara al instante.
-                            </p>
+                            <div className="text-center flex-grow flex flex-col">
+                                <h3 className="text-2xl font-bold text-slate-900 mb-4 tracking-tight">Empieza en 60s</h3>
+                                <p className="text-slate-500 text-base leading-relaxed mb-8 flex-grow">
+                                    Introduce los datos básicos de tu intervención y obtén una estructura jerárquica clara al instante.
+                                </p>
+                            </div>
 
                             {/* Button */}
-                            <Link href="/como-funciona" className="inline-flex items-center justify-center gap-2.5 w-full px-6 py-4 bg-blue-50 text-blue-700 font-semibold rounded-[12px] transition-all hover:bg-blue-600 hover:text-white hover:shadow-md">
+                            <Link href="/como-funciona" className="inline-flex items-center justify-center gap-3 w-full px-6 py-4 bg-blue-50 text-blue-700 font-semibold rounded-[12px] transition-all hover:bg-blue-600 hover:text-white hover:shadow-lg hover:shadow-blue-600/20">
                                 <Info className="h-5 w-5" />
-                                Ver cómo funciona
+                                <span>Ver cómo funciona</span>
+                                <ArrowRight className="h-4 w-4 ml-1 opacity-80" />
                             </Link>
                         </div>
 
                         {/* Card 2 */}
-                        <div className="group bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 text-left flex flex-col p-8 md:p-10 rounded-[18px]">
+                        <div className="group bg-white border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 flex flex-col p-8 md:p-10 rounded-[18px]">
                             {/* Icon Container */}
-                            <div className="h-14 w-14 rounded-full bg-slate-50 flex items-center justify-center mb-8 shadow-sm group-hover:bg-slate-100 transition-colors">
-                                <Layers className="h-6 w-6 text-slate-600" />
+                            <div className="h-16 w-16 mx-auto rounded-full bg-slate-50 flex items-center justify-center mb-8 group-hover:bg-slate-100 group-hover:scale-110 transition-all duration-500">
+                                <Layers className="h-8 w-8 text-slate-700" />
                             </div>
 
                             {/* Content */}
-                            <h3 className="text-xl font-bold text-slate-900 mb-3 tracking-tight">Qué Obtienes</h3>
-                            <p className="text-slate-500 text-sm md:text-base leading-relaxed mb-8 flex-grow">
-                                Un esqueleto base para tus diligencias y herramientas accesorias útiles para todo el ciclo de trabajo.
-                            </p>
+                            <div className="text-center flex-grow flex flex-col">
+                                <h3 className="text-2xl font-bold text-slate-900 mb-4 tracking-tight">Qué Obtienes</h3>
+                                <p className="text-slate-500 text-base leading-relaxed mb-8 flex-grow">
+                                    Un esqueleto base para tus diligencias y herramientas accesorias útiles para todo el ciclo de trabajo.
+                                </p>
+                            </div>
 
                             {/* Button */}
-                            <Link href="/herramientas" className="inline-flex items-center justify-center gap-2.5 w-full px-6 py-4 bg-slate-50 text-slate-700 font-semibold rounded-[12px] transition-all hover:bg-slate-800 hover:text-white hover:shadow-md">
+                            <Link href="/herramientas" className="inline-flex items-center justify-center gap-3 w-full px-6 py-4 bg-gray-100 text-gray-700 font-semibold rounded-[12px] transition-all hover:bg-gray-800 hover:text-white hover:shadow-lg hover:shadow-gray-800/20">
                                 <Wrench className="h-5 w-5" />
-                                Explorar herramientas
+                                <span>Explorar herramientas</span>
+                                <ArrowRight className="h-4 w-4 ml-1 opacity-80" />
                             </Link>
                         </div>
 
                         {/* Card 3 */}
-                        <div className="group bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 text-left flex flex-col p-8 md:p-10 rounded-[18px]">
+                        <div className="group bg-white border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 flex flex-col p-8 md:p-10 rounded-[18px]">
                             {/* Icon Container */}
-                            <div className="h-14 w-14 rounded-full bg-purple-50 flex items-center justify-center mb-8 shadow-sm group-hover:bg-purple-100 transition-colors">
-                                <ShieldCheck className="h-6 w-6 text-purple-600" />
+                            <div className="h-16 w-16 mx-auto rounded-full bg-purple-50 flex items-center justify-center mb-8 group-hover:bg-purple-100 group-hover:scale-110 transition-all duration-500">
+                                <ShieldCheck className="h-8 w-8 text-purple-600" />
                             </div>
 
                             {/* Content */}
-                            <h3 className="text-xl font-bold text-slate-900 mb-3 tracking-tight">Límites Rojos</h3>
-                            <p className="text-slate-500 text-sm md:text-base leading-relaxed mb-8 flex-grow">
-                                Atestados Fast es orientativo. NUNCA introduzcas datos personales (PII) reales en las herramientas.
-                            </p>
+                            <div className="text-center flex-grow flex flex-col">
+                                <h3 className="text-2xl font-bold text-slate-900 mb-4 tracking-tight">Límites Rojos</h3>
+                                <p className="text-slate-500 text-base leading-relaxed mb-8 flex-grow">
+                                    Atestados Fast es orientativo. NUNCA introduzcas datos personales (PII) reales en las herramientas.
+                                </p>
+                            </div>
 
                             {/* Button */}
-                            <Link href="/buenas-practicas" className="inline-flex items-center justify-center gap-2.5 w-full px-6 py-4 bg-purple-50 text-purple-700 font-semibold rounded-[12px] transition-all hover:bg-purple-600 hover:text-white hover:shadow-md">
+                            <Link href="/buenas-practicas" className="inline-flex items-center justify-center gap-3 w-full px-6 py-4 bg-purple-50 text-purple-700 font-semibold rounded-[12px] transition-all hover:bg-purple-600 hover:text-white hover:shadow-lg hover:shadow-purple-600/20">
                                 <BookOpen className="h-5 w-5" />
-                                Leer buenas prácticas
+                                <span>Leer buenas prácticas</span>
+                                <ArrowRight className="h-4 w-4 ml-1 opacity-80" />
                             </Link>
                         </div>
 
