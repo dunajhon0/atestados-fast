@@ -1,4 +1,6 @@
 import { Metadata } from 'next';
+import { InteractiveSimulator } from '@/components/method/InteractiveSimulator';
+import { SmartAuditor } from '@/components/method/SmartAuditor';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { TimelineGenerator } from '@/components/tools/TimelineGenerator';
 import { ToolLayout } from '@/components/layout/ToolLayout';
@@ -13,125 +15,99 @@ export default function ComoFuncionaPage() {
     return (
         <div className="pb-16">
             <div className="container mx-auto px-4 py-12 max-w-4xl">
-                <header className="mb-16 text-center">
-                    <h1 className="text-3xl md:text-5xl font-extrabold text-brand-dark tracking-tight mb-4">
-                        El Método Atestados Fast
-                    </h1>
-                    <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-                        Nuestro objetivo es enseñarte a estructurar un relato para que resulte claro, ordenado y procesalmente impecable. Sigue nuestra filosofía de 4 pasos fundamentales.
-                    </p>
-                </header>
+                {/* Hero Transaccional */}
+                <div className="grid md:grid-cols-2 gap-12 items-center mb-24 mt-8">
+                    <div className="text-left">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6">
+                            Estructura Impecable.<br />
+                            <span className="text-blue-600">Seguridad Absoluta.</span><br />
+                            Cero Fricción.
+                        </h1>
+                        <p className="text-lg text-slate-600 mb-8 leading-relaxed pr-4">
+                            Introduce la intervención tal como la viviste. El Método Atestados Fast extrae, anonimiza y compila los hechos en una narrativa procesalmente perfecta, lista para la validación final y traslado policial.
+                        </p>
 
-                {/* Stepper Vertical */}
-                <div className="space-y-8 relative before:absolute before:inset-0 before:ml-8 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent mb-20">
-
-                    <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                        <div className="hidden md:flex flex-col items-center justify-center w-16 h-16 rounded-full border-4 border-white bg-brand-primary text-white shadow-lg font-bold text-xl shrink-0 absolute left-1/2 -translate-x-1/2">
-                            1
+                        <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                            <a
+                                href="#metodo"
+                                className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3.5 rounded-xl font-bold transition-all shadow-lg shadow-blue-600/20 hover:shadow-xl hover:-translate-y-0.5"
+                            >
+                                Probar Simulación
+                            </a>
+                            <a
+                                href={process.env.NEXT_PUBLIC_GPT_URL || "#"}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-8 py-3.5 rounded-xl font-bold transition-all hover:border-slate-300"
+                            >
+                                Ir al Editor
+                            </a>
                         </div>
-                        <Card className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] ml-auto md:ml-0 md:mr-auto p-2">
-                            <CardHeader className="pb-2">
-                                <CardTitle className="text-lg flex items-center gap-2">
-                                    <span className="md:hidden flex items-center justify-center w-6 h-6 rounded-full bg-brand-primary text-white text-xs mr-1">1</span>
-                                    El Relato de Intervención
-                                </CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-slate-600 text-sm leading-relaxed">
-                                    Todo comienza con un borrador tuyo o las notas de tu libreta. Escribe lo que ocurrió sin preocuparte por la estructura policial perfecta. Solo céntrate en los hechos, lugares y horas.
-                                </p>
-                            </CardContent>
-                        </Card>
+
+                        <div className="flex items-center gap-2 text-sm text-slate-500 font-medium bg-slate-50 py-2.5 px-4 rounded-lg inline-flex border border-slate-100 shadow-sm">
+                            <span className="text-emerald-600 text-lg leading-none">🔒</span> Entorno Privado. 0% almacenamiento en servidor.
+                        </div>
                     </div>
 
-                    <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                        <div className="hidden md:flex flex-col items-center justify-center w-16 h-16 rounded-full border-4 border-white bg-slate-200 text-slate-600 shadow font-bold text-xl shrink-0 absolute left-1/2 -translate-x-1/2">
-                            2
-                        </div>
-                        <Card className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] mr-auto md:ml-auto md:mr-0 p-2">
-                            <CardHeader className="pb-2">
-                                <CardTitle className="text-lg flex items-center gap-2">
-                                    <span className="md:hidden flex items-center justify-center w-6 h-6 rounded-full bg-slate-300 text-slate-700 text-xs mr-1">2</span>
-                                    Reconocimiento de Entidades
-                                </CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-slate-600 text-sm leading-relaxed">
-                                    El sistema identifica automáticamente a los actores (Agente 1, Denunciante, Testigo, Investigado) y los elementos clave (indicios, armas, vehículos, ubicaciones exactas).
-                                </p>
-                            </CardContent>
-                        </Card>
-                    </div>
+                    {/* Abstract Mockup Visual */}
+                    <div className="relative lg:pl-6">
+                        <div className="absolute inset-0 bg-gradient-to-tr from-blue-100 to-indigo-50 rounded-3xl transform rotate-3 scale-105 opacity-50 blur-xl"></div>
+                        <div className="relative bg-white border border-slate-200 shadow-2xl rounded-2xl overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)]">
+                            {/* Window Header */}
+                            <div className="bg-slate-50 border-b border-slate-100 px-4 py-3 flex items-center gap-2">
+                                <div className="flex gap-1.5">
+                                    <div className="w-3 h-3 rounded-full bg-slate-300"></div>
+                                    <div className="w-3 h-3 rounded-full bg-slate-300"></div>
+                                    <div className="w-3 h-3 rounded-full bg-slate-300"></div>
+                                </div>
+                                <div className="mx-auto text-xs font-mono text-slate-400 flex items-center gap-1">
+                                    procesamiento_ia.exe
+                                </div>
+                            </div>
 
-                    <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                        <div className="hidden md:flex flex-col items-center justify-center w-16 h-16 rounded-full border-4 border-white bg-slate-200 text-slate-600 shadow font-bold text-xl shrink-0 absolute left-1/2 -translate-x-1/2">
-                            3
-                        </div>
-                        <Card className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] ml-auto md:ml-0 md:mr-auto p-2">
-                            <CardHeader className="pb-2">
-                                <CardTitle className="text-lg flex items-center gap-2">
-                                    <span className="md:hidden flex items-center justify-center w-6 h-6 rounded-full bg-slate-300 text-slate-700 text-xs mr-1">3</span>
-                                    Estructuración Procesal
-                                </CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-slate-600 text-sm leading-relaxed">
-                                    Se organiza el texto en párrafos cronológicos utilizando un lenguaje técnico, aséptico y policial, eliminando juicios de valor y afirmaciones ambiguas que dificultan la labor judicial.
-                                </p>
-                            </CardContent>
-                        </Card>
-                    </div>
+                            {/* Window Body */}
+                            <div className="p-6">
+                                {/* Raw Input */}
+                                <div className="mb-4">
+                                    <div className="text-[11px] font-bold text-slate-400 mb-2 uppercase tracking-wider">Input Crudo</div>
+                                    <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 font-mono text-sm text-slate-500 leading-relaxed shadow-inner">
+                                        ...llegamos al lugar a las 12 y vimos al sujeto de chaqueta azul gritando a la señora María, DNI 12345678A. Tratamos de calmar la situación pero...
+                                    </div>
+                                </div>
 
-                    <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                        <div className="hidden md:flex flex-col items-center justify-center w-16 h-16 rounded-full border-4 border-white bg-slate-200 text-slate-600 shadow font-bold text-xl shrink-0 absolute left-1/2 -translate-x-1/2">
-                            4
+                                {/* AI Arrow Divider */}
+                                <div className="flex justify-center -my-3 relative z-10 transition-transform duration-500 hover:scale-110 cursor-default">
+                                    <div className="bg-blue-600 text-white p-2 rounded-full shadow-lg border-4 border-white">
+                                        <ArrowDown className="w-4 h-4" />
+                                    </div>
+                                </div>
+
+                                {/* Processed Output */}
+                                <div className="mt-4">
+                                    <div className="text-[11px] font-bold text-blue-600 mb-2 uppercase tracking-wider flex items-center gap-1.5">
+                                        <CheckCircle2 className="w-3.5 h-3.5" /> Output Estructurado
+                                    </div>
+                                    <div className="bg-blue-50/50 p-4 rounded-xl border border-blue-100 font-mono text-sm text-slate-700 space-y-3">
+                                        <div className="flex gap-2">
+                                            <span className="text-blue-700 font-bold shrink-0">[12:00]</span>
+                                            <span>Llegada de la dotación al lugar.</span>
+                                        </div>
+                                        <div className="flex gap-2">
+                                            <span className="text-blue-700 font-bold shrink-0">[HECHO]</span>
+                                            <span className="leading-snug">Identificación de perjudicada (<span className="bg-slate-900 text-white px-1.5 py-0.5 rounded text-[10px] select-none tracking-widest cursor-help" title="Dato anonimizado">DNI/███</span>) y presunto autor.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <Card className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] mr-auto md:ml-auto md:mr-0 p-2">
-                            <CardHeader className="pb-2">
-                                <CardTitle className="text-lg flex items-center gap-2">
-                                    <span className="md:hidden flex items-center justify-center w-6 h-6 rounded-full bg-slate-300 text-slate-700 text-xs mr-1">4</span>
-                                    Revisión Humana (Vital)
-                                </CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-slate-600 text-sm leading-relaxed">
-                                    Tú eres la autoridad, no el software. Revisa el borrador generado, verifica que los hechos se ajustan a la realidad al 100% y dale tu validación oficial copiándolo a tu sistema.
-                                </p>
-                            </CardContent>
-                        </Card>
                     </div>
                 </div>
 
-                {/* Checklist */}
-                <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm mb-20 flex flex-col md:flex-row gap-8">
-                    <div className="flex-1">
-                        <h2 className="text-2xl font-bold text-slate-900 mb-6 border-b pb-4">Checklist de Preparación</h2>
-                        <ul className="space-y-4">
-                            <li className="flex items-start">
-                                <CheckCircle2 className="w-5 h-5 text-emerald-500 mr-3 shrink-0 mt-0.5" />
-                                <span className="text-slate-700 text-sm">Asegúrate de no incluir Datos Personales Identificables (DNI, matrículas, nombres reales completos). Usa seudónimos en su lugar.</span>
-                            </li>
-                            <li className="flex items-start">
-                                <CheckCircle2 className="w-5 h-5 text-emerald-500 mr-3 shrink-0 mt-0.5" />
-                                <span className="text-slate-700 text-sm">Ten claro el orden cronológico de los eventos.</span>
-                            </li>
-                            <li className="flex items-start">
-                                <CheckCircle2 className="w-5 h-5 text-emerald-500 mr-3 shrink-0 mt-0.5" />
-                                <span className="text-slate-700 text-sm">Reúne todos los indicios, actas y efectos intervinientes antes de generar el documento final.</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="flex-1 bg-red-50 p-6 rounded-xl border border-red-100">
-                        <h3 className="font-bold text-red-900 mb-4 flex items-center gap-2">
-                            <AlertTriangle className="w-5 h-5" /> Errores Frecuentes
-                        </h3>
-                        <ul className="space-y-3">
-                            <li className="text-sm text-red-800">• Copiar y pegar volcados completos del DNI o base de datos en la herramienta.</li>
-                            <li className="text-sm text-red-800">• Dar por bueno el texto de la IA sin leerlo. Recuerda tu responsabilidad procesal.</li>
-                            <li className="text-sm text-red-800">• Añadir valoraciones subjetivas (ej: &quot;Estaba muy nervioso y parecía culpable&quot;).</li>
-                        </ul>
-                    </div>
-                </div>
+                {/* Workflow Interactivo */}
+                <InteractiveSimulator />
+
+                {/* Asistente Inteligente QA */}
+                <SmartAuditor />
             </div>
 
             {/* Tool Layout Area */}
