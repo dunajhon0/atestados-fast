@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, Bot, Zap, ShieldCheck, Layers, Info, Wrench, BookOpen } from 'lucide-react';
+import { ArrowRight, Bot, Zap, ShieldCheck, Layers, Info, Wrench, BookOpen, Wand2, Cpu } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Card, CardTitle } from '@/components/ui/Card';
 import { InternalSearch } from '@/components/tools/InternalSearch';
@@ -31,26 +31,22 @@ export default function Home() {
 
                         <div className="flex flex-col sm:flex-row items-stretch justify-center gap-4 mb-10 w-full px-2 sm:px-0 max-w-2xl mx-auto">
                             <Link href="/demo" className="flex-1">
-                                <Button size="lg" className="w-full h-16 sm:h-[72px] text-lg rounded-[16px] group relative overflow-hidden transition-all shadow-xl shadow-brand-primary/20 hover:shadow-brand-primary/40 hover:-translate-y-1">
-                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                                    <div className="flex items-center justify-center gap-3">
-                                        <div className="bg-white/20 p-2 rounded-xl transition-transform group-hover:scale-110 shadow-sm">
-                                            <Zap className="h-6 w-6 text-white" fill="currentColor" />
-                                        </div>
-                                        <span className="font-bold tracking-wide">Probar motor de redacción</span>
-                                        <ArrowRight className="h-5 w-5 ml-1 opacity-80 group-hover:translate-x-1.5 transition-transform" />
+                                <Button size="lg" className="w-full h-14 sm:h-[64px] text-lg rounded-full group relative overflow-hidden transition-all bg-gradient-to-r from-blue-600 to-indigo-600 border-0 text-white shadow-xl shadow-blue-600/20 hover:shadow-blue-600/40 hover:-translate-y-1">
+                                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+                                    <div className="flex items-center justify-center gap-2.5 relative z-10 px-2 lg:px-4">
+                                        <Wand2 className="h-5 w-5 text-blue-100 group-hover:rotate-12 transition-transform duration-300" />
+                                        <span className="font-semibold tracking-wide">Probar motor de redacción</span>
+                                        <ArrowRight className="h-5 w-5 opacity-80 group-hover:translate-x-1.5 transition-transform" />
                                     </div>
                                 </Button>
                             </Link>
 
                             <a href={gptUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
-                                <Button variant="outline" size="lg" className="w-full h-16 sm:h-[72px] text-lg rounded-[16px] group border-slate-200/80 bg-white/70 hover:bg-white backdrop-blur-xl shadow-sm hover:shadow-xl hover:shadow-brand-secondary/10 hover:border-brand-secondary/40 transition-all hover:-translate-y-1">
-                                    <div className="flex items-center justify-center gap-3">
-                                        <div className="bg-brand-secondary/10 p-2 rounded-xl text-brand-secondary transition-transform group-hover:scale-110 group-hover:bg-brand-secondary/20">
-                                            <Bot className="h-6 w-6" />
-                                        </div>
-                                        <span className="font-bold text-slate-700 tracking-wide group-hover:text-brand-dark transition-colors">Abrir GPT Público</span>
-                                        <ArrowRight className="h-5 w-5 ml-1 text-slate-400 group-hover:translate-x-1.5 group-hover:text-brand-secondary transition-all" />
+                                <Button variant="outline" size="lg" className="w-full h-14 sm:h-[64px] text-lg rounded-full group border-slate-200 bg-white hover:bg-slate-50 shadow-sm hover:shadow-md hover:border-slate-300 transition-all hover:-translate-y-1">
+                                    <div className="flex items-center justify-center gap-2.5 px-2 lg:px-4">
+                                        <Cpu className="h-5 w-5 text-slate-500 group-hover:text-indigo-500 transition-colors duration-300" />
+                                        <span className="font-semibold text-slate-700 tracking-wide group-hover:text-slate-900 transition-colors">Abrir GPT Público</span>
+                                        <ArrowRight className="h-5 w-5 text-slate-400 opacity-80 group-hover:translate-x-1.5 group-hover:text-slate-600 transition-all" />
                                     </div>
                                 </Button>
                             </a>
