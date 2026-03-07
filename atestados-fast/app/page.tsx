@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, Bot, Zap, ShieldCheck, Layers, Info, Wrench, BookOpen, Wand2, Cpu } from 'lucide-react';
+import { ArrowRight, Bot, Zap, ShieldCheck, Layers, Info, Wrench, BookOpen, Rocket, MessageSquareText } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Card, CardTitle } from '@/components/ui/Card';
 import { InternalSearch } from '@/components/tools/InternalSearch';
@@ -31,22 +31,26 @@ export default function Home() {
 
                         <div className="flex flex-col sm:flex-row items-stretch justify-center gap-4 mb-10 w-full px-2 sm:px-0 max-w-2xl mx-auto">
                             <Link href="/demo" className="flex-1">
-                                <Button size="lg" className="w-full h-14 sm:h-[64px] text-lg rounded-full group relative overflow-hidden transition-all bg-gradient-to-r from-blue-600 to-indigo-600 border-0 text-white shadow-xl shadow-blue-600/20 hover:shadow-blue-600/40 hover:-translate-y-1">
-                                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
-                                    <div className="flex items-center justify-center gap-2.5 relative z-10 px-2 lg:px-4">
-                                        <Wand2 className="h-5 w-5 text-blue-100 group-hover:rotate-12 transition-transform duration-300" />
-                                        <span className="font-semibold tracking-wide">Probar motor de redacción</span>
-                                        <ArrowRight className="h-5 w-5 opacity-80 group-hover:translate-x-1.5 transition-transform" />
+                                <Button size="lg" className="w-full h-14 sm:h-[64px] text-lg rounded-[16px] group relative overflow-hidden transition-all bg-slate-900 border border-slate-700 text-white shadow-2xl shadow-slate-900/30 hover:bg-slate-800 hover:-translate-y-1">
+                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                                    <div className="flex items-center justify-center gap-3 relative z-10 px-2 lg:px-4">
+                                        <div className="bg-white/10 p-2 rounded-xl text-white group-hover:scale-110 transition-transform">
+                                            <Rocket className="h-5 w-5" />
+                                        </div>
+                                        <span className="font-bold tracking-wide">Redactar Ahora</span>
+                                        <ArrowRight className="h-5 w-5 opacity-70 group-hover:translate-x-1.5 transition-transform" />
                                     </div>
                                 </Button>
                             </Link>
 
                             <a href={gptUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
-                                <Button variant="outline" size="lg" className="w-full h-14 sm:h-[64px] text-lg rounded-full group border-slate-200 bg-white hover:bg-slate-50 shadow-sm hover:shadow-md hover:border-slate-300 transition-all hover:-translate-y-1">
-                                    <div className="flex items-center justify-center gap-2.5 px-2 lg:px-4">
-                                        <Cpu className="h-5 w-5 text-slate-500 group-hover:text-indigo-500 transition-colors duration-300" />
-                                        <span className="font-semibold text-slate-700 tracking-wide group-hover:text-slate-900 transition-colors">Abrir GPT Público</span>
-                                        <ArrowRight className="h-5 w-5 text-slate-400 opacity-80 group-hover:translate-x-1.5 group-hover:text-slate-600 transition-all" />
+                                <Button variant="outline" size="lg" className="w-full h-14 sm:h-[64px] text-lg rounded-[16px] group border-slate-200 bg-white hover:bg-slate-50 shadow-sm hover:shadow-md hover:border-slate-300 transition-all hover:-translate-y-1">
+                                    <div className="flex items-center justify-center gap-3 px-2 lg:px-4">
+                                        <div className="bg-slate-100 p-2 rounded-xl text-slate-600 group-hover:bg-slate-200 group-hover:text-slate-900 transition-colors">
+                                            <MessageSquareText className="h-5 w-5" />
+                                        </div>
+                                        <span className="font-bold text-slate-700 tracking-wide group-hover:text-slate-900 transition-colors">Abrir GPT Público</span>
+                                        <ArrowRight className="h-5 w-5 text-slate-400 opacity-80 group-hover:translate-x-1.5 group-hover:text-slate-900 transition-all" />
                                     </div>
                                 </Button>
                             </a>
@@ -79,7 +83,7 @@ export default function Home() {
                             <p className="text-slate-500 text-base leading-relaxed mb-8 flex-grow">
                                 Introduce los datos básicos de tu intervención y obtén una estructura jerárquica clara al instante.
                             </p>
-                            <Button asChild variant="outline" size="md" className="w-full rounded-[12px] group-hover:bg-brand-primary group-hover:text-white group-hover:border-brand-primary transition-colors">
+                            <Button asChild variant="ghost" size="md" className="w-full mt-4 rounded-[14px] bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white transition-all shadow-none group-hover:shadow-md">
                                 <Link href="/como-funciona">
                                     <Info className="h-4 w-4" />
                                     Ver cómo funciona
@@ -93,10 +97,10 @@ export default function Home() {
                                 <Layers className="h-8 w-8 text-brand-secondary" />
                             </div>
                             <CardTitle className="text-brand-dark mb-3 text-2xl font-bold tracking-tight">Qué Obtienes</CardTitle>
-                            <p className="text-slate-500 text-base leading-relaxed mb-8 flex-grow">
+                            <p className="text-slate-500 text-base leading-relaxed mb-4 flex-grow">
                                 Un esqueleto base para tus diligencias y herramientas accesorias útiles para todo el ciclo de trabajo.
                             </p>
-                            <Button asChild variant="outline" size="md" className="w-full rounded-[12px] group-hover:bg-brand-secondary group-hover:text-white group-hover:border-brand-secondary transition-colors">
+                            <Button asChild variant="ghost" size="md" className="w-full mt-4 rounded-[14px] bg-purple-50 text-purple-700 hover:bg-purple-600 hover:text-white transition-all shadow-none group-hover:shadow-md">
                                 <Link href="/herramientas">
                                     <Wrench className="h-4 w-4" />
                                     Explorar herramientas
@@ -110,10 +114,10 @@ export default function Home() {
                                 <ShieldCheck className="h-8 w-8 text-red-500" />
                             </div>
                             <CardTitle className="text-brand-dark mb-3 text-2xl font-bold tracking-tight">Límites Rojos</CardTitle>
-                            <p className="text-slate-500 text-base leading-relaxed mb-8 flex-grow">
+                            <p className="text-slate-500 text-base leading-relaxed mb-4 flex-grow">
                                 Atestados Fast es orientativo. NUNCA introduzcas datos personales (PII) reales en las herramientas.
                             </p>
-                            <Button asChild variant="outline" size="md" className="w-full rounded-[12px] hover:bg-red-50 hover:text-red-700 hover:border-red-200 transition-colors">
+                            <Button asChild variant="ghost" size="md" className="w-full mt-4 rounded-[14px] bg-red-50 text-red-700 hover:bg-red-600 hover:text-white transition-all shadow-none group-hover:shadow-md">
                                 <Link href="/buenas-practicas">
                                     <BookOpen className="h-4 w-4" />
                                     Leer buenas prácticas
