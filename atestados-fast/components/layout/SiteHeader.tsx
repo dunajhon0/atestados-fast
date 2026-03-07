@@ -46,16 +46,14 @@ export default function SiteHeader() {
             >
                 {/* Brand Lockup: Logo + Text */}
                 <Link href="/" className="flex items-center gap-3 xl:gap-4 flex-shrink-0 group" onClick={handleClose}>
-                    <div className="relative flex items-center justify-center bg-blue-600 rounded-xl w-10 h-10 xl:w-12 xl:h-12 shadow-lg shadow-blue-600/20 group-hover:scale-105 transition-transform duration-300">
-                        {/* If you have a specific icon inside logo.png, we use it as background or mask, 
-                            but since we know it's a wide banner currently, we will assume user expects 
-                            either the banner or a new typographical setup. Let's use the actual banner 
-                            but clipped/sized correctly, OR a pure text lockup if the banner fails. 
-                            Ideally, we replace the banner with a strong CSS logo as requested. */}
-                        <svg className="w-6 h-6 xl:w-7 xl:h-7 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                        </svg>
-                    </div>
+                    <Image
+                        src="/logo.png"
+                        alt="Atestados Fast Logo"
+                        width={48}
+                        height={48}
+                        className="w-10 h-10 xl:w-12 xl:h-12 object-contain group-hover:scale-105 transition-transform duration-300 rounded-xl shadow-lg shadow-blue-600/20"
+                        priority
+                    />
                     <span className="font-black text-xl xl:text-2xl tracking-tighter text-slate-900 group-hover:text-blue-700 transition-colors">
                         Atestados Fast
                     </span>
@@ -137,8 +135,8 @@ export default function SiteHeader() {
                                 href={link.href}
                                 onClick={handleClose}
                                 className={`p-4 rounded-xl text-lg font-semibold transition-colors flex items-center ${isActive
-                                        ? "bg-blue-50 text-blue-700"
-                                        : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                                    ? "bg-blue-50 text-blue-700"
+                                    : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                                     }`}
                             >
                                 {link.label}
