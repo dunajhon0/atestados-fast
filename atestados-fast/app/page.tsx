@@ -1,157 +1,188 @@
+'use client';
+
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, Bot, Zap, ShieldCheck, Layers, Info, Wrench, BookOpen, Rocket, MessageSquareText, Timer, Package, ShieldAlert } from 'lucide-react';
+import { ArrowRight, Bot, Zap, ShieldCheck, Layers, Info, Wrench, BookOpen, Rocket, MessageSquareText, Timer, Package, ShieldAlert, Sparkles, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Card, CardTitle } from '@/components/ui/Card';
 import { InternalSearch } from '@/components/tools/InternalSearch';
 import AdSlot from '@/components/AdSlot';
 
-export const metadata: Metadata = {
-    title: 'Atestados Fast | Hub Central de Redacción Policial',
-    description: 'Herramientas interactivas y guías prácticas para la redacción de atestados policiales. Segura, rápida y optimizada para uso responsable.',
-};
-
 export default function Home() {
     const gptUrl = process.env.NEXT_PUBLIC_GPT_URL || "#";
 
     return (
-        <>
-            {/* Hero Section V3 */}
-            <section className="relative pt-12 pb-8 md:pt-20 md:pb-12 overflow-hidden bg-[linear-gradient(180deg,_#EEF2FF_0%,_#F8FAFC_40%,_#FFFFFF_100%)]">
-                <div className="absolute inset-0 bg-grid-slate-200/[0.04] bg-[bottom_1px_center]" />
+        <div className="min-h-screen bg-[#020203] text-slate-300 selection:bg-blue-500/30 selection:text-blue-200">
+            {/* Scanline Animation Overlay */}
+            <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
+                <div className="scanline"></div>
+            </div>
 
-                <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
-                    <div className="max-w-4xl mx-auto text-center animate-in fade-in slide-in-from-bottom-4 duration-700">
-                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-brand-dark tracking-tight mb-6">
-                            Agiliza la redacción y <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-secondary">enfócate en la calle</span>
+            {/* Strategic Atmosphere: Layered Background */}
+            <div className="fixed inset-0 z-0">
+                {/* Glow Central */}
+                <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-600/10 blur-[120px] rounded-full"></div>
+                {/* Tactical Grid */}
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay"></div>
+                <div className="absolute inset-0 bg-grid-white/[0.02] bg-[bottom_1px_center] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+            </div>
+
+            {/* Hero Section: The Tactical Command Hub */}
+            <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden z-10">
+                <div className="container mx-auto px-4 flex flex-col items-center">
+                    <div className="max-w-5xl mx-auto text-center animate-in fade-in slide-in-from-bottom-8 duration-1000">
+                        {/* Premium Badge */}
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 mb-8 animate-pulse">
+                            <Sparkles className="w-4 h-4 text-blue-400" />
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-400">Plataforma táctica de alto rendimiento</span>
+                        </div>
+
+                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tight leading-[0.9] mb-8">
+                            REDACCIÓN POLICIAL <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-blue-600">SIN FRICCIÓN</span>
                         </h1>
-                        <p className="text-lg md:text-xl text-slate-500 mb-8 max-w-2xl mx-auto leading-relaxed">
-                            El sistema organizativo para confeccionar atestados y diligencias. Rápido, no oficial y 100% privado en tu navegador.
+
+                        <p className="text-lg md:text-2xl text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
+                            El estándar de oro para el agente moderno. <span className="text-slate-200">Privacidad absoluta en local</span>, velocidad algorítmica y rigor procesal en cada hito.
                         </p>
 
-                        <div className="flex flex-col sm:flex-row items-stretch justify-center gap-4 mb-10 w-full px-2 sm:px-0 max-w-2xl mx-auto">
+                        <div className="flex flex-col sm:flex-row items-stretch justify-center gap-6 mb-16 w-full px-4 sm:px-0 max-w-3xl mx-auto">
                             <Link href="/demo" className="flex-1">
-                                <Button size="lg" className="w-full h-14 sm:h-[64px] text-lg rounded-[16px] group relative overflow-hidden transition-all bg-slate-900 border border-slate-700 text-white shadow-2xl shadow-slate-900/30 hover:bg-slate-800 hover:-translate-y-1">
-                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                                    <div className="flex items-center justify-center gap-3 relative z-10 px-2 lg:px-4">
-                                        <div className="bg-white/10 p-2 rounded-xl text-white group-hover:scale-110 transition-transform">
-                                            <Rocket className="h-5 w-5" />
-                                        </div>
-                                        <span className="font-bold tracking-wide">Redactar Ahora</span>
-                                        <ArrowRight className="h-5 w-5 opacity-70 group-hover:translate-x-1.5 transition-transform" />
+                                <Button size="lg" className="w-full h-16 text-lg rounded-2xl group relative overflow-hidden transition-all bg-white text-black hover:bg-slate-200 hover:-translate-y-1 shadow-[0_0_40px_rgba(59,130,246,0.3)]">
+                                    <div className="flex items-center justify-center gap-3 relative z-10 px-2">
+                                        <Rocket className="h-5 w-5 fill-current" />
+                                        <span className="font-black uppercase tracking-wider">Iniciar Redactor</span>
+                                        <ChevronRight className="h-5 w-5 group-hover:translate-x-1.5 transition-transform" />
                                     </div>
                                 </Button>
                             </Link>
 
                             <a href={gptUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
-                                <Button variant="outline" size="lg" className="w-full h-14 sm:h-[64px] text-lg rounded-[16px] group border-slate-200 bg-white hover:bg-slate-50 shadow-sm hover:shadow-md hover:border-slate-300 transition-all hover:-translate-y-1">
-                                    <div className="flex items-center justify-center gap-3 px-2 lg:px-4">
-                                        <div className="bg-slate-100 p-2 rounded-xl text-slate-600 group-hover:bg-slate-200 group-hover:text-slate-900 transition-colors">
-                                            <MessageSquareText className="h-5 w-5" />
-                                        </div>
-                                        <span className="font-bold text-slate-700 tracking-wide group-hover:text-slate-900 transition-colors">Abrir GPT Público</span>
-                                        <ArrowRight className="h-5 w-5 text-slate-400 opacity-80 group-hover:translate-x-1.5 group-hover:text-slate-900 transition-all" />
+                                <Button variant="outline" size="lg" className="w-full h-16 text-lg rounded-2xl group border-white/10 bg-white/5 text-white hover:bg-white/10 transition-all hover:-translate-y-1 backdrop-blur-sm">
+                                    <div className="flex items-center justify-center gap-3">
+                                        <MessageSquareText className="h-5 w-5" />
+                                        <span className="font-bold tracking-tight opacity-70 group-hover:opacity-100 transition-opacity">Consola GPT Pública</span>
                                     </div>
                                 </Button>
                             </a>
                         </div>
                     </div>
 
-                    {/* Internal Search Tool (Integrated closely to Hero) */}
-                    <div className="max-w-2xl w-full shadow-2xl shadow-brand-primary/5 rounded-[18px] border border-slate-200/60 bg-white/95 backdrop-blur-md animate-in zoom-in-95 duration-700 delay-100 fill-mode-both">
-                        <InternalSearch />
+                    {/* Integrated Search Console */}
+                    <div className="max-w-3xl w-full relative group">
+                        <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-[32px] blur-xl opacity-50 group-hover:opacity-100 transition duration-1000"></div>
+                        <div className="relative bg-black/40 backdrop-blur-xl rounded-[28px] border border-white/10 p-2 shadow-2xl">
+                            <InternalSearch />
+                        </div>
+                        {/* Quick Action Chips */}
+                        <div className="flex flex-wrap justify-center gap-2 mt-6 animate-in fade-in duration-1000 delay-500">
+                            {['/Plantillas', '/Cronología', '/Leyes', '/Checklist'].map((chip) => (
+                                <button key={chip} className="px-4 py-1.5 rounded-full bg-white/5 border border-white/5 text-[11px] font-bold text-slate-500 hover:bg-blue-500/10 hover:text-blue-400 hover:border-blue-500/20 transition-all uppercase tracking-widest">
+                                    {chip}
+                                </button>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>
 
             {/* AdSense In-Article Top */}
-            <section className="container mx-auto px-4 my-4 md:my-8 opacity-90 transition-opacity hover:opacity-100">
-                <AdSlot clientId="ca-pub-3779816940145698" slotId={process.env.NEXT_PUBLIC_ADSENSE_SLOT_HEADER || ""} format="auto" />
+            <section className="container mx-auto px-4 my-8 md:my-12 relative z-10">
+                <div className="rounded-3xl border border-white/5 bg-white/[0.02] p-4 text-center">
+                    <span className="text-[10px] text-slate-700 font-bold uppercase tracking-[0.3em] mb-4 block">Contenido Patrocinado</span>
+                    <AdSlot clientId="ca-pub-3779816940145698" slotId={process.env.NEXT_PUBLIC_ADSENSE_SLOT_HEADER || ""} format="auto" />
+                </div>
             </section>
 
-            {/* Cards Section (Redesigned completely) */}
-            <section className="pb-12 pt-2 md:pt-6 md:pb-16 bg-white relative z-10 w-full">
-                <div className="container mx-auto px-4 max-w-6xl">
-                    <div className="grid md:grid-cols-3 gap-6 lg:gap-8 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 fill-mode-both">
+            {/* Operational Modules: Glassmorphism Grid */}
+            <section className="pb-24 pt-8 relative z-10 w-full overflow-hidden">
+                <div className="container mx-auto px-4 max-w-7xl">
+                    <div className="grid md:grid-cols-3 gap-8">
 
-                        {/* Card 1 */}
-                        <div className="group bg-white border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 flex flex-col p-8 md:p-10 rounded-[18px]">
-                            {/* Premium Icon Container */}
-                            <div className="h-16 w-16 mx-auto rounded-[16px] bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mb-8 shadow-lg shadow-blue-500/30 rotate-3 group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
-                                <Timer className="h-8 w-8 text-white -rotate-3 group-hover:-rotate-6 transition-transform duration-500" strokeWidth={2} />
+                        {/* Module 1: Time */}
+                        <div className="group relative bg-white/[0.01] border border-white/5 rounded-[40px] p-10 transition-all hover:bg-white/[0.03] hover:border-blue-500/20 hover:-translate-y-2">
+                            <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                                <Timer className="w-32 h-32 text-blue-500" />
                             </div>
-
-                            {/* Content */}
-                            <div className="text-center flex-grow flex flex-col">
-                                <h3 className="text-2xl font-bold text-slate-900 mb-4 tracking-tight">Empieza en 60s</h3>
-                                <p className="text-slate-500 text-base leading-relaxed mb-8 flex-grow">
-                                    Introduce los datos básicos de tu intervención y obtén una estructura jerárquica clara al instante.
-                                </p>
+                            <div className="h-16 w-16 rounded-2xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center mb-8">
+                                <Timer className="h-8 w-8 text-blue-500" />
                             </div>
-
-                            {/* Button */}
-                            <Link href="/como-funciona" className="inline-flex items-center justify-center gap-3 w-full px-6 py-4 bg-blue-50 text-blue-700 font-semibold rounded-[12px] transition-all hover:bg-blue-600 hover:text-white hover:shadow-lg hover:shadow-blue-600/20">
-                                <Info className="h-5 w-5" />
-                                <span>Ver cómo funciona</span>
-                                <ArrowRight className="h-4 w-4 ml-1 opacity-80" />
+                            <h3 className="text-3xl font-black text-white mb-4 tracking-tight leading-none group-hover:text-blue-400 transition-colors">Empieza en <span className="block text-blue-500">60 segundos.</span></h3>
+                            <p className="text-slate-400 text-lg leading-relaxed mb-8 font-medium">
+                                Ingesta de datos eficiente. Estructura el relato fáctico mientras los hechos están frescos.
+                            </p>
+                            <Link href="/como-funciona" className="flex items-center gap-2 text-sm font-black text-white uppercase tracking-widest group-hover:gap-4 transition-all">
+                                Explorar Flujo <ArrowRight className="w-4 h-4 text-blue-500" />
                             </Link>
                         </div>
 
-                        {/* Card 2 */}
-                        <div className="group bg-white border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 flex flex-col p-8 md:p-10 rounded-[18px]">
-                            {/* Premium Icon Container */}
-                            <div className="h-16 w-16 mx-auto rounded-[16px] bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center mb-8 shadow-lg shadow-slate-800/20 -rotate-3 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-500">
-                                <Package className="h-8 w-8 text-white flex-shrink-0 rotate-3 group-hover:rotate-6 transition-transform duration-500" strokeWidth={2} />
+                        {/* Module 2: Tools */}
+                        <div className="group relative bg-white/[0.01] border border-white/5 rounded-[40px] p-10 transition-all hover:bg-white/[0.03] hover:border-emerald-500/20 hover:-translate-y-2">
+                            <div className="h-16 w-16 rounded-2xl bg-emerald-600/10 border border-emerald-500/20 flex items-center justify-center mb-8">
+                                <Package className="h-8 w-8 text-emerald-500" />
                             </div>
-
-                            {/* Content */}
-                            <div className="text-center flex-grow flex flex-col">
-                                <h3 className="text-2xl font-bold text-slate-900 mb-4 tracking-tight">Qué Obtienes</h3>
-                                <p className="text-slate-500 text-base leading-relaxed mb-8 flex-grow">
-                                    Un esqueleto base para tus diligencias y herramientas accesorias útiles para todo el ciclo de trabajo.
-                                </p>
-                            </div>
-
-                            {/* Button */}
-                            <Link href="/herramientas" className="inline-flex items-center justify-center gap-3 w-full px-6 py-4 bg-gray-100 text-gray-700 font-semibold rounded-[12px] transition-all hover:bg-gray-800 hover:text-white hover:shadow-lg hover:shadow-gray-800/20">
-                                <Wrench className="h-5 w-5" />
-                                <span>Explorar herramientas</span>
-                                <ArrowRight className="h-4 w-4 ml-1 opacity-80" />
+                            <h3 className="text-3xl font-black text-white mb-4 tracking-tight leading-none group-hover:text-emerald-400 transition-colors">Arsenal <span className="block text-emerald-500">Operativo.</span></h3>
+                            <p className="text-slate-400 text-lg leading-relaxed mb-8 font-medium">
+                                Del generador de minutas al sastre de diligencias. Todo lo que necesitas en un solo hub.
+                            </p>
+                            <Link href="/herramientas" className="flex items-center gap-2 text-sm font-black text-white uppercase tracking-widest group-hover:gap-4 transition-all">
+                                Ver Equipamiento <ArrowRight className="w-4 h-4 text-emerald-500" />
                             </Link>
                         </div>
 
-                        {/* Card 3 */}
-                        <div className="group bg-white border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 flex flex-col p-8 md:p-10 rounded-[18px]">
-                            {/* Premium Icon Container */}
-                            <div className="h-16 w-16 mx-auto rounded-[16px] bg-gradient-to-br from-rose-500 to-red-600 flex items-center justify-center mb-8 shadow-lg shadow-red-500/30 rotate-3 group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
-                                <ShieldAlert className="h-8 w-8 text-white -rotate-3 group-hover:-rotate-6 transition-transform duration-500" strokeWidth={2} />
+                        {/* Module 3: Security */}
+                        <div className="group relative bg-white/[0.01] border border-white/5 rounded-[40px] p-10 transition-all hover:bg-white/[0.03] hover:border-rose-500/20 hover:-translate-y-2">
+                            <div className="h-16 w-16 rounded-2xl bg-rose-600/10 border border-rose-500/20 flex items-center justify-center mb-8">
+                                <ShieldAlert className="h-8 w-8 text-rose-500" />
                             </div>
-
-                            {/* Content */}
-                            <div className="text-center flex-grow flex flex-col">
-                                <h3 className="text-2xl font-bold text-slate-900 mb-4 tracking-tight">Límites Rojos</h3>
-                                <p className="text-slate-500 text-base leading-relaxed mb-8 flex-grow">
-                                    Atestados Fast es orientativo. NUNCA introduzcas datos personales (PII) reales en las herramientas.
-                                </p>
-                            </div>
-
-                            {/* Button */}
-                            <Link href="/buenas-practicas" className="inline-flex items-center justify-center gap-3 w-full px-6 py-4 bg-purple-50 text-purple-700 font-semibold rounded-[12px] transition-all hover:bg-purple-600 hover:text-white hover:shadow-lg hover:shadow-purple-600/20">
-                                <BookOpen className="h-5 w-5" />
-                                <span>Leer buenas prácticas</span>
-                                <ArrowRight className="h-4 w-4 ml-1 opacity-80" />
+                            <h3 className="text-3xl font-black text-white mb-4 tracking-tight leading-none group-hover:text-rose-400 transition-colors">Límites <span className="block text-rose-500">Críticos.</span></h3>
+                            <p className="text-slate-400 text-lg leading-relaxed mb-8 font-medium">
+                                Seguridad de datos y buenas prácticas. Garantiza la integridad jurídica de tu trabajo diario.
+                            </p>
+                            <Link href="/buenas-practicas" className="flex items-center gap-2 text-sm font-black text-white uppercase tracking-widest group-hover:gap-4 transition-all">
+                                Protocolo <ArrowRight className="w-4 h-4 text-rose-500" />
                             </Link>
                         </div>
 
+                    </div>
+
+                    {/* Bottom Branding / Trust line */}
+                    <div className="mt-24 border-t border-white/5 pt-12 text-center overflow-hidden">
+                        <div className="flex justify-center items-center gap-12 grayscale opacity-20 pointer-events-none select-none">
+                            <span className="text-4xl font-black tracking-[0.5em] text-white">ATESTADOS FAST</span>
+                        </div>
                     </div>
                 </div>
             </section>
 
             {/* AdSense Footer */}
-            <section className="container mx-auto px-4 my-8 pb-12">
-                <AdSlot clientId="ca-pub-3779816940145698" slotId={process.env.NEXT_PUBLIC_ADSENSE_SLOT_INARTICLE || ""} format="fluid" layoutKey="-gw-1+2a-9x+5c" />
+            <section className="container mx-auto px-4 my-12 pb-24 relative z-10">
+                <div className="max-w-4xl mx-auto rounded-3xl overflow-hidden border border-white/5 bg-white/[0.02] p-8">
+                    <AdSlot clientId="ca-pub-3779816940145698" slotId={process.env.NEXT_PUBLIC_ADSENSE_SLOT_INARTICLE || ""} format="fluid" layoutKey="-gw-1+2a-9x+5c" />
+                </div>
             </section>
 
-        </>
+            <style jsx>{`
+                .scanline {
+                    width: 100%;
+                    height: 2px;
+                    background: rgba(59, 130, 246, 0.03);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    animation: scanline 8s linear infinite;
+                    box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+                }
+
+                @keyframes scanline {
+                    0% { top: -10%; }
+                    100% { top: 110%; }
+                }
+
+                :global(.selection\:bg-blue-500\/30::selection) {
+                    background-color: rgba(59, 130, 246, 0.3) !important;
+                }
+            `}</style>
+        </div>
     );
 }
