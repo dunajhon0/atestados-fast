@@ -29,21 +29,31 @@ export default function Home() {
                             El sistema organizativo para confeccionar atestados y diligencias. Rápido, no oficial y 100% privado en tu navegador.
                         </p>
 
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 px-2 sm:px-0 w-full sm:w-auto">
-                            <Button asChild size="lg" className="w-full sm:w-auto h-16 text-lg">
-                                <Link href="/demo">
-                                    <Zap className="h-6 w-6" />
-                                    Probar motor de redacción
-                                    <ArrowRight className="h-5 w-5 ml-1 opacity-80" />
-                                </Link>
-                            </Button>
-                            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto h-16 text-lg bg-white/80 backdrop-blur-sm">
-                                <a href={gptUrl} target="_blank" rel="noopener noreferrer">
-                                    <Bot className="h-6 w-6" />
-                                    Abrir GPT Público
-                                    <ArrowRight className="h-5 w-5 ml-1 opacity-80" />
-                                </a>
-                            </Button>
+                        <div className="flex flex-col sm:flex-row items-stretch justify-center gap-4 mb-10 w-full px-2 sm:px-0 max-w-2xl mx-auto">
+                            <Link href="/demo" className="flex-1">
+                                <Button size="lg" className="w-full h-16 sm:h-[72px] text-lg rounded-[16px] group relative overflow-hidden transition-all shadow-xl shadow-brand-primary/20 hover:shadow-brand-primary/40 hover:-translate-y-1">
+                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                                    <div className="flex items-center justify-center gap-3">
+                                        <div className="bg-white/20 p-2 rounded-xl transition-transform group-hover:scale-110 shadow-sm">
+                                            <Zap className="h-6 w-6 text-white" fill="currentColor" />
+                                        </div>
+                                        <span className="font-bold tracking-wide">Probar motor de redacción</span>
+                                        <ArrowRight className="h-5 w-5 ml-1 opacity-80 group-hover:translate-x-1.5 transition-transform" />
+                                    </div>
+                                </Button>
+                            </Link>
+
+                            <a href={gptUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
+                                <Button variant="outline" size="lg" className="w-full h-16 sm:h-[72px] text-lg rounded-[16px] group border-slate-200/80 bg-white/70 hover:bg-white backdrop-blur-xl shadow-sm hover:shadow-xl hover:shadow-brand-secondary/10 hover:border-brand-secondary/40 transition-all hover:-translate-y-1">
+                                    <div className="flex items-center justify-center gap-3">
+                                        <div className="bg-brand-secondary/10 p-2 rounded-xl text-brand-secondary transition-transform group-hover:scale-110 group-hover:bg-brand-secondary/20">
+                                            <Bot className="h-6 w-6" />
+                                        </div>
+                                        <span className="font-bold text-slate-700 tracking-wide group-hover:text-brand-dark transition-colors">Abrir GPT Público</span>
+                                        <ArrowRight className="h-5 w-5 ml-1 text-slate-400 group-hover:translate-x-1.5 group-hover:text-brand-secondary transition-all" />
+                                    </div>
+                                </Button>
+                            </a>
                         </div>
                     </div>
 
