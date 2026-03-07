@@ -1,16 +1,27 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Search, Command, X, ArrowRight, Zap, Target, Book, Shield } from "lucide-react";
+import { Search, Command, X, ArrowRight, Zap, Target, Book, Shield, FileText, Clock, ListChecks, Landmark, ClipboardList, BookOpen, Star, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { Button } from "@/components/ui/Button";
 
-const searchIndex = [
-    { title: "Motor de Redacción", path: "/demo", type: "Terminal", keywords: "simulador, redaccion, borrador, ia", icon: <Zap className="w-4 h-4" /> },
-    { title: "Generador de Cronología", path: "/como-funciona", type: "Tool", keywords: "tiempo, horas, relato, historial", icon: <ArrowRight className="w-4 h-4" /> },
-    { title: "Gestor de Turnos", path: "/herramientas", type: "Tool", keywords: "cuadrante, calendario, festivos", icon: <Target className="w-4 h-4" /> },
-    { title: "Índice de Diligencias", path: "/herramientas", type: "Docs", keywords: "indice, caratula, diligencia", icon: <Book className="w-4 h-4" /> },
-    { title: "Buenas Prácticas", path: "/buenas-practicas", type: "Protocolo", keywords: "semaforo, rojo, hacer, no hacer, guia", icon: <Shield className="w-4 h-4" /> },
-    { title: "Aviso Legal y Privacidad", path: "/legal", type: "Legal", keywords: "cookies, condiciones, seguridad", icon: <Shield className="w-4 h-4" /> },
+const allResources = [
+    { title: "Plantillas de diligencias", description: "Borradores oficiales estructurados", path: "/demo", type: "Tool", icon: <FileText className="w-5 h-5" />, color: "blue" },
+    { title: "Cronología de hechos", description: "Ordenador temporal algorítmico", path: "/como-funciona", type: "Tool", icon: <Clock className="w-5 h-5" />, color: "emerald" },
+    { title: "Checklist de intervención", description: "Protocolos de actuación en calle", path: "/buenas-practicas", type: "Docs", icon: <ListChecks className="w-5 h-5" />, color: "amber" },
+    { title: "Guía de redacción", description: "Manual de estilo y rigor jurídico", path: "/buenas-practicas", type: "Docs", icon: <BookOpen className="w-5 h-5" />, color: "indigo" },
+    { title: "Normativa y leyes", description: "Consulta rápida de articulado", path: "/herramientas", type: "Legal", icon: <Landmark className="w-5 h-5" />, color: "rose" },
+    { title: "Modelos de actas", description: "Estructuras para actas y minutas", path: "/herramientas", type: "Tool", icon: <ClipboardList className="w-5 h-5" />, color: "slate" },
+    { title: "Ejemplos de atestados", description: "Librería de casos resueltos", path: "/herramientas", type: "Docs", icon: <Star className="w-5 h-5" />, color: "purple" },
+    { title: "Buenas prácticas", description: "Protocolo de seguridad y ética", path: "/buenas-practicas", type: "Protocolo", icon: <Shield className="w-5 h-5" />, color: "cyan" },
+];
+
+const quickChips = [
+    { label: "/Plantillas", path: "/demo" },
+    { label: "/Cronología", path: "/como-funciona" },
+    { label: "/Leyes", path: "/herramientas" },
+    { label: "/Checklist", path: "/buenas-practicas" },
+    { label: "/Modelos", path: "/herramientas" },
 ];
 
 export function InternalSearch() {
@@ -18,13 +29,13 @@ export function InternalSearch() {
     const [isFocused, setIsFocused] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
 
-    const results = query.length > 1
-        ? searchIndex.filter(item =>
+    const filteredResources = query.length > 1
+        ? allResources.filter(item =>
             item.title.toLowerCase().includes(query.toLowerCase()) ||
-            item.keywords.toLowerCase().includes(query.toLowerCase()) ||
+            item.description.toLowerCase().includes(query.toLowerCase()) ||
             item.type.toLowerCase().includes(query.toLowerCase())
         )
-        : [];
+        : allResources;
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -38,86 +49,116 @@ export function InternalSearch() {
     }, []);
 
     return (
-        <div className="w-full relative">
-            {/* Command Input Area */}
-            <div className={`relative transition-all duration-300 ${isFocused ? 'scale-[1.01]' : ''}`}>
-                <div className={`absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none transition-colors ${isFocused ? 'text-blue-500' : 'text-slate-500'}`}>
-                    <Search className={`h-5 w-5 ${isFocused ? 'animate-pulse' : ''}`} />
-                </div>
+        <div className="w-full flex flex-col gap-6">
+            {/* 1. SEARCH CONSOLE REFINED */}
+            <div className="relative group max-w-3xl mx-auto w-full">
+                <div className={`absolute -inset-0.5 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-[28px] blur-md transition-opacity duration-500 ${isFocused ? 'opacity-100' : 'opacity-0'}`}></div>
+                <div className={`relative flex items-center bg-white/5 border border-white/10 rounded-[24px] p-1.5 transition-all duration-300 ${isFocused ? 'bg-white/10 border-blue-500/30' : ''}`}>
+                    <div className={`pl-4 transition-colors ${isFocused ? 'text-blue-400' : 'text-slate-500'}`}>
+                        <Search className="w-5 h-5" />
+                    </div>
+                    <input
+                        ref={inputRef}
+                        type="text"
+                        className="flex-1 bg-transparent border-none text-white px-4 py-3 focus:outline-none focus:ring-0 text-lg placeholder-slate-500 font-medium"
+                        placeholder="Busca plantillas, leyes, cronologías o herramientas..."
+                        value={query}
+                        onFocus={() => setIsFocused(true)}
+                        onBlur={() => setTimeout(() => setIsFocused(false), 200)}
+                        onChange={(e) => setQuery(e.target.value)}
+                    />
 
-                <input
-                    ref={inputRef}
-                    type="text"
-                    className={`block w-full pl-14 pr-24 py-5 bg-black/40 border-none text-white placeholder-slate-600 focus:outline-none focus:ring-0 text-xl font-medium rounded-[28px] transition-all
-                        ${isFocused ? 'placeholder-transparent' : 'placeholder-slate-600'}`}
-                    placeholder="¿Qué herramienta necesitas ahora?"
-                    value={query}
-                    onFocus={() => setIsFocused(true)}
-                    onBlur={() => setTimeout(() => setIsFocused(false), 200)}
-                    onChange={(e) => setQuery(e.target.value)}
-                />
-
-                {/* Keyboard Shortcut Hint */}
-                <div className="absolute inset-y-0 right-5 flex items-center pointer-events-none">
-                    <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-500 font-mono text-[10px] font-black tracking-widest">
+                    <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-500 font-mono text-[10px] font-black mr-2 tracking-widest">
                         <Command className="w-3 h-3" />
                         <span>K</span>
                     </div>
-                </div>
 
-                {query.length > 0 && (
-                    <button
-                        onClick={() => setQuery("")}
-                        className="absolute inset-y-0 right-20 pr-4 flex items-center text-slate-600 hover:text-white transition-colors"
-                    >
-                        <X className="h-5 w-5" />
-                    </button>
-                )}
+                    {query.length > 0 && (
+                        <button onClick={() => setQuery("")} className="p-2 text-slate-500 hover:text-white mr-2">
+                            <X className="w-5 h-5" />
+                        </button>
+                    )}
+                </div>
             </div>
 
-            {/* Neon Focus Ring */}
-            <div className={`absolute inset-0 -z-10 bg-blue-600/20 blur-2xl rounded-[32px] transition-opacity duration-500 ${isFocused ? 'opacity-100' : 'opacity-0'}`}></div>
+            {/* 2. QUICK ACCESS CHIPS */}
+            <div className="flex flex-wrap justify-center gap-2 px-4 animate-in fade-in duration-700">
+                {quickChips.map((chip) => (
+                    <Link key={chip.label} href={chip.path}>
+                        <button className="px-4 py-1.5 rounded-full bg-white/5 border border-white/5 text-[11px] font-bold text-slate-500 hover:bg-blue-500/10 hover:text-blue-400 hover:border-blue-500/20 transition-all uppercase tracking-widest">
+                            {chip.label}
+                        </button>
+                    </Link>
+                ))}
+            </div>
 
-            {/* Result Panel */}
-            {query.length > 1 && (
-                <div className="absolute top-full left-0 right-0 mt-4 bg-[#0A0A0B]/80 backdrop-blur-2xl rounded-3xl border border-white/10 shadow-3xl overflow-hidden z-50 animate-in fade-in zoom-in-95 duration-200">
-                    <div className="p-3">
-                        {results.length > 0 ? (
-                            <div className="space-y-1">
-                                {results.map((result, idx) => (
-                                    <Link
-                                        key={idx}
-                                        href={result.path}
-                                        className="flex items-center justify-between p-4 rounded-2xl hover:bg-white/5 group transition-all"
-                                    >
-                                        <div className="flex items-center gap-4">
-                                            <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-slate-400 group-hover:bg-blue-600/20 group-hover:text-blue-500 transition-all">
-                                                {result.icon}
-                                            </div>
-                                            <div>
-                                                <p className="text-slate-200 font-bold tracking-tight text-sm">{result.title}</p>
-                                                <p className="text-slate-500 text-xs mt-0.5 font-medium">{result.keywords.split(',').slice(0, 2).join(' · ')}</p>
-                                            </div>
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            <span className="text-[10px] font-black uppercase tracking-widest text-slate-600 px-2 py-1 bg-white/5 rounded-lg group-hover:bg-blue-600/10 group-hover:text-blue-400 transition-all">
-                                                {result.type}
-                                            </span>
-                                            <ArrowRight className="w-4 h-4 text-slate-600 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-                                        </div>
-                                    </Link>
-                                ))}
-                            </div>
-                        ) : (
-                            <div className="p-12 text-center">
-                                <Search className="w-12 h-12 text-slate-800 mx-auto mb-4 stroke-1" />
-                                <p className="text-slate-500 font-medium">No se han encontrado registros para <span className="text-white italic">&quot;{query}&quot;</span></p>
-                                <p className="text-slate-600 text-xs mt-2">Prueba con términos como &quot;Redacción&quot; o &quot;Cronología&quot;</p>
-                            </div>
-                        )}
+            {/* 3. RESOURCE HUB GRID */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-2 sm:px-0">
+                {filteredResources.map((resource, idx) => (
+                    <div
+                        key={idx}
+                        className="group relative bg-[#0A0A0B]/60 backdrop-blur-xl border border-white/5 p-5 rounded-[24px] transition-all hover:bg-white/[0.05] hover:border-white/10 hover:-translate-y-1 flex flex-col h-full"
+                    >
+                        <div className={`w-10 h-10 rounded-xl mb-4 flex items-center justify-center transition-all bg-${resource.color}-500/10 text-${resource.color}-500 border border-${resource.color}-500/20 group-hover:scale-110`}>
+                            {resource.icon}
+                        </div>
+                        <h4 className="text-white font-bold text-sm mb-1 tracking-tight">{resource.title}</h4>
+                        <p className="text-slate-500 text-xs leading-relaxed mb-6 flex-grow">{resource.description}</p>
+
+                        <Link href={resource.path} className="w-full">
+                            <Button variant="ghost" size="sm" className="w-full justify-between group/btn bg-white/5 hover:bg-blue-600 hover:text-white rounded-xl h-10 px-4">
+                                <span className="text-[11px] font-black uppercase tracking-widest">Abrir</span>
+                                <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                            </Button>
+                        </Link>
                     </div>
+                ))}
+            </div>
+
+            {/* NO RESULTS STATE */}
+            {query.length > 1 && filteredResources.length === 0 && (
+                <div className="py-20 text-center animate-in fade-in zoom-in-95 duration-500">
+                    <div className="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-800">
+                        <Search className="w-10 h-10" />
+                    </div>
+                    <p className="text-slate-400 font-bold mb-1">Sin coincidencias para &quot;{query}&quot;</p>
+                    <p className="text-slate-600 text-sm">Prueba con términos genéricos como &quot;Redacción&quot; o &quot;Leyes&quot;</p>
                 </div>
             )}
+
+            <style jsx>{`
+                .text-blue-500 { color: #3b82f6; }
+                .bg-blue-500\/10 { background-color: rgba(59, 130, 246, 0.1); }
+                .border-blue-500\/20 { border-color: rgba(59, 130, 246, 0.2); }
+
+                .text-emerald-500 { color: #10b981; }
+                .bg-emerald-500\/10 { background-color: rgba(16, 185, 129, 0.1); }
+                .border-emerald-500\/20 { border-color: rgba(16, 185, 129, 0.2); }
+
+                .text-amber-500 { color: #f59e0b; }
+                .bg-amber-500\/10 { background-color: rgba(245, 158, 11, 0.1); }
+                .border-amber-500\/20 { border-color: rgba(245, 158, 11, 0.2); }
+
+                .text-indigo-500 { color: #6366f1; }
+                .bg-indigo-500\/10 { background-color: rgba(99, 102, 241, 0.1); }
+                .border-indigo-500\/20 { border-color: rgba(99, 102, 241, 0.2); }
+
+                .text-rose-500 { color: #f43f5e; }
+                .bg-rose-500\/10 { background-color: rgba(244, 63, 94, 0.1); }
+                .border-rose-500\/20 { border-color: rgba(244, 63, 94, 0.2); }
+
+                .text-slate-500 { color: #64748b; }
+                .bg-slate-500\/10 { background-color: rgba(100, 116, 139, 0.1); }
+                .border-slate-500\/20 { border-color: rgba(100, 116, 139, 0.2); }
+
+                .text-purple-500 { color: #a855f7; }
+                .bg-purple-500\/10 { background-color: rgba(168, 85, 247, 0.1); }
+                .border-purple-500\/20 { border-color: rgba(168, 85, 247, 0.2); }
+
+                .text-cyan-500 { color: #06b6d4; }
+                .bg-cyan-500\/10 { background-color: rgba(6, 182, 212, 0.1); }
+                .border-cyan-500\/20 { border-color: rgba(6, 182, 212, 0.2); }
+            `}</style>
         </div>
     );
 }

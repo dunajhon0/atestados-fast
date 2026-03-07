@@ -68,19 +68,11 @@ export default function Home() {
                         </div>
                     </div>
 
-                    {/* Integrated Search Console */}
-                    <div className="max-w-3xl w-full relative group">
-                        <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-[32px] blur-xl opacity-50 group-hover:opacity-100 transition duration-1000"></div>
-                        <div className="relative bg-black/40 backdrop-blur-xl rounded-[28px] border border-white/10 p-2 shadow-2xl">
+                    {/* Integrated Resource Hub & Command Console */}
+                    <div className="max-w-6xl w-full relative group mt-12 mb-8">
+                        <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/5 to-indigo-600/5 rounded-[32px] blur-xl opacity-30 group-hover:opacity-50 transition duration-1000"></div>
+                        <div className="relative">
                             <InternalSearch />
-                        </div>
-                        {/* Quick Action Chips */}
-                        <div className="flex flex-wrap justify-center gap-2 mt-6 animate-in fade-in duration-1000 delay-500">
-                            {['/Plantillas', '/Cronología', '/Leyes', '/Checklist'].map((chip) => (
-                                <button key={chip} className="px-4 py-1.5 rounded-full bg-white/5 border border-white/5 text-[11px] font-bold text-slate-500 hover:bg-blue-500/10 hover:text-blue-400 hover:border-blue-500/20 transition-all uppercase tracking-widest">
-                                    {chip}
-                                </button>
-                            ))}
                         </div>
                     </div>
                 </div>
