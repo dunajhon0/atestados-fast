@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, Zap, Target, Shield, Search } from 'lucide-react';
+import { ArrowRight, Bot, Sparkles, Zap, ShieldAlert, Layers } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+import { Card, CardTitle } from '@/components/ui/Card';
 import { InternalSearch } from '@/components/tools/InternalSearch';
 import AdSlot from '@/components/AdSlot';
 
@@ -17,12 +17,12 @@ export default function Home() {
     return (
         <>
             {/* Hero Section */}
-            <section className="relative pt-16 pb-16 md:pt-24 md:pb-20 overflow-hidden bg-brand-light">
+            <section className="relative pt-12 pb-12 md:pt-20 md:pb-16 overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-50 via-brand-light to-brand-light">
                 <div className="absolute inset-0 bg-grid-slate-200/[0.04] bg-[bottom_1px_center]" />
 
-                <div className="container mx-auto px-4 relative z-10">
+                <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
                     <div className="max-w-4xl mx-auto text-center animate-in fade-in slide-in-from-bottom-4 duration-700">
-                        <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-brand-dark tracking-tight mb-6">
+                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-brand-dark tracking-tight mb-6">
                             Agiliza la redacción y <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-secondary">enfócate en la calle</span>
                         </h1>
                         <p className="text-lg md:text-xl text-slate-500 mb-8 max-w-2xl mx-auto leading-relaxed">
@@ -30,24 +30,24 @@ export default function Home() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10 px-2 sm:px-0">
-                            <Button asChild size="lg" className="w-full sm:w-auto h-14 px-8 text-base">
+                            <Button asChild size="lg" className="w-full sm:w-auto">
                                 <Link href="/demo">
-                                    <Zap className="mr-2 h-5 w-5" />
-                                    Probar Motor de Redacción
+                                    <Sparkles className="h-5 w-5" />
+                                    Probar motor de redacción
                                 </Link>
                             </Button>
-                            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto h-14 px-8 text-base">
+                            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
                                 <a href={gptUrl} target="_blank" rel="noopener noreferrer">
+                                    <Bot className="h-5 w-5" />
                                     Abrir GPT Público
-                                    <ArrowRight className="ml-2 h-5 w-5" />
                                 </a>
                             </Button>
                         </div>
+                    </div>
 
-                        {/* Internal Search Tool */}
-                        <div className="max-w-2xl mx-auto w-full shadow-2xl shadow-slate-200/50 rounded-2xl border border-slate-100 bg-white">
-                            <InternalSearch />
-                        </div>
+                    {/* Internal Search Tool (Integrated closely to Hero) */}
+                    <div className="max-w-2xl w-full shadow-2xl shadow-brand-primary/10 rounded-3xl border border-slate-200 bg-white animate-in zoom-in-95 duration-700 delay-100 fill-mode-both">
+                        <InternalSearch />
                     </div>
                 </div>
             </section>
@@ -58,50 +58,62 @@ export default function Home() {
             </section>
 
             {/* Cards Section */}
-            <section className="py-16 md:py-24 bg-brand-light">
+            <section className="py-12 md:py-16 bg-brand-light">
                 <div className="container mx-auto px-4 max-w-6xl">
-                    <div className="grid md:grid-cols-3 gap-6 md:gap-8 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150 fill-mode-both">
+                    <div className="grid md:grid-cols-3 gap-6 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 fill-mode-both">
 
-                        <Card className="group bg-white border border-slate-200 hover:border-slate-300 hover:shadow-xl hover:shadow-brand-primary/5 transition-all duration-300 text-left flex flex-col p-8 md:p-10 rounded-2xl">
-                            <div className="h-14 w-14 rounded-xl bg-blue-50 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-blue-100 transition-transform duration-300">
-                                <Zap className="h-7 w-7 text-brand-primary" />
+                        {/* Card 1 */}
+                        <Card className="group bg-white border border-slate-200 hover:border-brand-primary/30 hover:shadow-2xl hover:shadow-brand-primary/10 transition-all duration-300 text-left flex flex-col p-8 md:p-10 rounded-3xl relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-brand-primary/5 rounded-bl-[100px] -z-10 transition-transform duration-500 group-hover:scale-110" />
+                            <div className="h-16 w-16 rounded-2xl bg-brand-primary/10 flex items-center justify-center mb-6 ring-4 ring-white shadow-sm group-hover:-translate-y-1 transition-transform duration-300">
+                                <Zap className="h-8 w-8 text-brand-primary" />
                             </div>
-                            <CardTitle className="text-brand-dark mb-3 text-xl">Empieza en 60s</CardTitle>
-                            <p className="text-slate-500 text-sm leading-relaxed mb-8 flex-grow">
+                            <CardTitle className="text-brand-dark mb-4 text-2xl font-bold tracking-tight">Empieza en 60s</CardTitle>
+                            <p className="text-slate-500 text-base leading-relaxed mb-8 flex-grow">
                                 Introduce los datos básicos de tu intervención y obtén una estructura jerárquica clara al instante.
                             </p>
-                            <Link href="/como-funciona" className="inline-flex items-center text-sm font-semibold text-brand-primary hover:text-brand-secondary transition-colors">
-                                Ver Cómo Funciona
-                                <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                            </Link>
+                            <Button asChild variant="outline" className="w-full group-hover:bg-brand-primary group-hover:text-white group-hover:border-brand-primary transition-colors">
+                                <Link href="/como-funciona">
+                                    Ver cómo funciona
+                                    <ArrowRight className="h-4 w-4 ml-2 opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                                </Link>
+                            </Button>
                         </Card>
 
-                        <Card className="group bg-white border border-slate-200 hover:border-slate-300 hover:shadow-xl hover:shadow-brand-secondary/5 transition-all duration-300 text-left flex flex-col p-8 md:p-10 rounded-2xl shadow-sm">
-                            <div className="h-14 w-14 rounded-xl bg-purple-50 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-purple-100 transition-transform duration-300">
-                                <Target className="h-7 w-7 text-brand-secondary" />
+                        {/* Card 2 */}
+                        <Card className="group bg-white border border-slate-200 hover:border-brand-secondary/30 hover:shadow-2xl hover:shadow-brand-secondary/10 transition-all duration-300 text-left flex flex-col p-8 md:p-10 rounded-3xl relative overflow-hidden shadow-sm">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-brand-secondary/5 rounded-bl-[100px] -z-10 transition-transform duration-500 group-hover:scale-110" />
+                            <div className="h-16 w-16 rounded-2xl bg-brand-secondary/10 flex items-center justify-center mb-6 ring-4 ring-white shadow-sm group-hover:-translate-y-1 transition-transform duration-300">
+                                <Layers className="h-8 w-8 text-brand-secondary" />
                             </div>
-                            <CardTitle className="text-brand-dark mb-3 text-xl">Qué Obtienes</CardTitle>
-                            <p className="text-slate-500 text-sm leading-relaxed mb-8 flex-grow">
-                                Un esqueleto base para tus diligencias y herramientas accesorias (turnos, índices, cronologías) útiles para todo el ciclo de trabajo.
+                            <CardTitle className="text-brand-dark mb-4 text-2xl font-bold tracking-tight">Qué Obtienes</CardTitle>
+                            <p className="text-slate-500 text-base leading-relaxed mb-8 flex-grow">
+                                Un esqueleto base para tus diligencias y herramientas accesorias (turnos, índices, cronologías).
                             </p>
-                            <Link href="/herramientas" className="inline-flex items-center text-sm font-semibold text-brand-secondary hover:text-purple-700 transition-colors">
-                                Explorar Herramientas
-                                <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                            </Link>
+                            <Button asChild variant="outline" className="w-full group-hover:bg-brand-secondary group-hover:text-white group-hover:border-brand-secondary transition-colors">
+                                <Link href="/herramientas">
+                                    Explorar herramientas
+                                    <ArrowRight className="h-4 w-4 ml-2 opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                                </Link>
+                            </Button>
                         </Card>
 
-                        <Card className="group bg-white border border-slate-200 hover:border-red-200 hover:shadow-xl hover:shadow-red-500/5 transition-all duration-300 text-left flex flex-col p-8 md:p-10 rounded-2xl">
-                            <div className="h-14 w-14 rounded-xl bg-red-50 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-red-100 transition-transform duration-300">
-                                <Shield className="h-7 w-7 text-red-500" />
+                        {/* Card 3 */}
+                        <Card className="group bg-white border border-slate-200 hover:border-red-300 hover:shadow-xl hover:shadow-red-500/10 transition-all duration-300 text-left flex flex-col p-8 md:p-10 rounded-3xl relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/5 rounded-bl-[100px] -z-10 transition-transform duration-500 group-hover:scale-110" />
+                            <div className="h-16 w-16 rounded-2xl bg-red-50 flex items-center justify-center mb-6 ring-4 ring-white shadow-sm group-hover:-translate-y-1 transition-transform duration-300">
+                                <ShieldAlert className="h-8 w-8 text-red-500" />
                             </div>
-                            <CardTitle className="text-brand-dark mb-3 text-xl">Límites Rojos</CardTitle>
-                            <p className="text-slate-500 text-sm leading-relaxed mb-8 flex-grow">
-                                Atestados Fast es orientativo. NUNCA introduzcas datos personales (PII) reales en las herramientas ni en los simuladores.
+                            <CardTitle className="text-brand-dark mb-4 text-2xl font-bold tracking-tight">Límites Rojos</CardTitle>
+                            <p className="text-slate-500 text-base leading-relaxed mb-8 flex-grow">
+                                Atestados Fast es orientativo. NUNCA introduzcas datos personales (PII) reales en las herramientas.
                             </p>
-                            <Link href="/buenas-practicas" className="inline-flex items-center text-sm font-semibold text-red-500 hover:text-red-700 transition-colors">
-                                Leer Buenas Prácticas
-                                <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                            </Link>
+                            <Button asChild variant="outline" className="w-full hover:bg-red-50 hover:text-red-600 hover:border-red-200 transition-colors">
+                                <Link href="/buenas-practicas">
+                                    Leer buenas prácticas
+                                    <ArrowRight className="h-4 w-4 ml-2 opacity-70 group-hover:translate-x-1 transition-all" />
+                                </Link>
+                            </Button>
                         </Card>
 
                     </div>
