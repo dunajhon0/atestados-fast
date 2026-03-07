@@ -34,14 +34,6 @@ export default function ComoFuncionaPage() {
                             >
                                 Probar Simulación
                             </a>
-                            <a
-                                href={process.env.NEXT_PUBLIC_GPT_URL || "#"}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-8 py-3.5 rounded-xl font-bold transition-all hover:border-slate-300"
-                            >
-                                Ir al Editor
-                            </a>
                         </div>
 
                         <div className="flex items-center gap-2 text-sm text-slate-500 font-medium bg-slate-50 py-2.5 px-4 rounded-lg inline-flex border border-slate-100 shadow-sm">
