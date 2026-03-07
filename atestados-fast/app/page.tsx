@@ -38,12 +38,12 @@ export default function Home() {
                         </div>
 
                         <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tight leading-[0.9] mb-8">
-                            REDACCIÓN POLICIAL <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-blue-600">SIN FRICCIÓN</span>
+                            LA FORMA INTELIGENTE <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-blue-600">DE REDACTAR DILIGENCIAS</span>
                         </h1>
 
                         <p className="text-lg md:text-2xl text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
-                            El estándar de oro para el agente moderno. <span className="text-slate-200">Privacidad absoluta en local</span>, velocidad algorítmica y rigor procesal en cada hito.
+                            Herramientas diseñadas para ayudarte a redactar diligencias con mayor rapidez, claridad y rigor. Organiza los hechos correctamente, minimiza errores y genera borradores estructurados listos para revisar.
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-stretch justify-center gap-6 mb-16 w-full px-4 sm:px-0 max-w-3xl mx-auto">
