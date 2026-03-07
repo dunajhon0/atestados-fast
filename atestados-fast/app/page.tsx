@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, Bot, Zap, ShieldCheck, Layers, Info, Wrench, BookOpen, Rocket, MessageSquareText } from 'lucide-react';
+import { ArrowRight, Bot, Zap, ShieldCheck, Layers, Info, Wrench, BookOpen, Rocket, MessageSquareText, Timer, Package, ShieldAlert } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Card, CardTitle } from '@/components/ui/Card';
 import { InternalSearch } from '@/components/tools/InternalSearch';
@@ -76,9 +76,9 @@ export default function Home() {
 
                         {/* Card 1 */}
                         <div className="group bg-white border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 flex flex-col p-8 md:p-10 rounded-[18px]">
-                            {/* Icon Container */}
-                            <div className="h-16 w-16 mx-auto rounded-full bg-blue-50/80 flex items-center justify-center mb-8 group-hover:bg-blue-100 group-hover:scale-110 transition-all duration-500">
-                                <Zap className="h-8 w-8 text-blue-600" />
+                            {/* Premium Icon Container */}
+                            <div className="h-16 w-16 mx-auto rounded-[16px] bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mb-8 shadow-lg shadow-blue-500/30 rotate-3 group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
+                                <Timer className="h-8 w-8 text-white -rotate-3 group-hover:-rotate-6 transition-transform duration-500" strokeWidth={2} />
                             </div>
 
                             {/* Content */}
@@ -99,9 +99,9 @@ export default function Home() {
 
                         {/* Card 2 */}
                         <div className="group bg-white border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 flex flex-col p-8 md:p-10 rounded-[18px]">
-                            {/* Icon Container */}
-                            <div className="h-16 w-16 mx-auto rounded-full bg-slate-50 flex items-center justify-center mb-8 group-hover:bg-slate-100 group-hover:scale-110 transition-all duration-500">
-                                <Layers className="h-8 w-8 text-slate-700" />
+                            {/* Premium Icon Container */}
+                            <div className="h-16 w-16 mx-auto rounded-[16px] bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center mb-8 shadow-lg shadow-slate-800/20 -rotate-3 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-500">
+                                <Package className="h-8 w-8 text-white flex-shrink-0 rotate-3 group-hover:rotate-6 transition-transform duration-500" strokeWidth={2} />
                             </div>
 
                             {/* Content */}
@@ -122,9 +122,9 @@ export default function Home() {
 
                         {/* Card 3 */}
                         <div className="group bg-white border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 flex flex-col p-8 md:p-10 rounded-[18px]">
-                            {/* Icon Container */}
-                            <div className="h-16 w-16 mx-auto rounded-full bg-purple-50 flex items-center justify-center mb-8 group-hover:bg-purple-100 group-hover:scale-110 transition-all duration-500">
-                                <ShieldCheck className="h-8 w-8 text-purple-600" />
+                            {/* Premium Icon Container */}
+                            <div className="h-16 w-16 mx-auto rounded-[16px] bg-gradient-to-br from-rose-500 to-red-600 flex items-center justify-center mb-8 shadow-lg shadow-red-500/30 rotate-3 group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
+                                <ShieldAlert className="h-8 w-8 text-white -rotate-3 group-hover:-rotate-6 transition-transform duration-500" strokeWidth={2} />
                             </div>
 
                             {/* Content */}
