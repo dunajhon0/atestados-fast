@@ -1,40 +1,65 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { FileText, ShieldAlert, ListOrdered, CheckSquare, ChevronRight, CheckCircle2, AlertTriangle, ArrowRight, X } from 'lucide-react';
+import { FileText, ShieldAlert, ListOrdered, CheckSquare, ChevronRight, CheckCircle2, AlertTriangle, ArrowRight, X, Terminal, Cpu } from 'lucide-react';
 
 const steps = [
     {
         id: 1,
-        title: "Relato de Intervención",
-        description: "Vacía los datos iniciales. Sin preocuparte del formato.",
-        icon: FileText
+        title: "Fase de Ingesta",
+        subtitle: "Relato de Calle",
+        description: "El sistema procesa lenguaje natural no estructurado. Sin fricción ni formatos rígidos.",
+        icon: FileText,
+        logs: ["Iniciando motor de lenguaje...", "Esperando input del agente...", "Buffer local activo."]
     },
     {
         id: 2,
-        title: "Reconocimiento y Anonimización",
-        description: "Aislamiento inmediato de KPIs personales.",
-        icon: ShieldAlert
+        title: "Fase de Purga",
+        subtitle: "Sanitización PII",
+        description: "Detección activa y enmascarado de Datos de Carácter Personal (DNI, Nombres, Ubicaciones).",
+        icon: ShieldAlert,
+        logs: ["Escaneando entidades sensibles...", "Detectado DNI: [HIDDEN]", "Aplicando anonimización local."]
     },
     {
         id: 3,
-        title: "Estructuración Procesal",
-        description: "Tabulación algorítmica lógica y cronológica.",
-        icon: ListOrdered
+        title: "Fase de Compilación",
+        subtitle: "Lógica Procesal",
+        description: "Reordenación cronológica y jerárquica de los hechos bajo estándares policiales.",
+        icon: ListOrdered,
+        logs: ["Relacionando hitos temporales...", "Estructurando narrativa por puntos...", "Generando borrador_v1.md"]
     },
     {
         id: 4,
-        title: "Revisión Oficial",
-        description: "Tu criterio final da validez jurídica.",
-        icon: CheckSquare
+        title: "Fase de Validación",
+        subtitle: "Control Humano",
+        description: "El instructor supervisa la coherencia y valida el texto para su traslado oficial.",
+        icon: CheckSquare,
+        logs: ["Borrador verificado.", "Integridad procesal: 100%", "Listo para exportación segura."]
     }
 ];
 
 export function InteractiveSimulator() {
     const [activeStep, setActiveStep] = useState(1);
     const [isTyping, setIsTyping] = useState(false);
+    const [displayedLogs, setDisplayedLogs] = useState<string[]>([]);
 
-    // Auto-advance simulation demo for step 1
+    useEffect(() => {
+        if (activeStep) {
+            setDisplayedLogs([]);
+            let currentLogs = steps[activeStep - 1].logs;
+            let i = 0;
+            const logInterval = setInterval(() => {
+                if (i < currentLogs.length) {
+                    setDisplayedLogs(prev => [...prev, currentLogs[i]]);
+                    i++;
+                } else {
+                    clearInterval(logInterval);
+                }
+            }, 600);
+            return () => clearInterval(logInterval);
+        }
+    }, [activeStep]);
+
     useEffect(() => {
         if (activeStep === 1) {
             setIsTyping(true);
@@ -43,13 +68,26 @@ export function InteractiveSimulator() {
         }
     }, [activeStep]);
 
-    return (
-        <div className="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden flex flex-col lg:flex-row mb-20">
-            {/* Sidebar Stepper */}
-            <div className="w-full lg:w-1/3 bg-slate-50 border-b lg:border-b-0 lg:border-r border-slate-200 p-6 lg:p-8 shrink-0">
-                <h3 className="text-xl font-bold text-slate-900 mb-8">El Método en 4 Fases</h3>
+    const activeStepData = steps[activeStep - 1];
 
-                <div className="space-y-3">
+    return (
+        <div className="bg-[#0c0c0e] rounded-[40px] border border-white/5 shadow-3xl overflow-hidden flex flex-col lg:flex-row mb-20 relative">
+            {/* Ambient inner glow */}
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent"></div>
+
+            {/* Sidebar Stepper */}
+            <div className="w-full lg:w-1/3 bg-black/20 border-b lg:border-b-0 lg:border-r border-white/5 p-6 lg:p-10 shrink-0">
+                <div className="flex items-center gap-3 mb-10">
+                    <div className="w-10 h-10 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+                        <Terminal className="w-5 h-5 text-blue-400" />
+                    </div>
+                    <div>
+                        <h3 className="text-xl font-black text-white">The Engine</h3>
+                        <p className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Protocolo de Procesamiento</p>
+                    </div>
+                </div>
+
+                <div className="space-y-4">
                     {steps.map((step) => {
                         const Icon = step.icon;
                         const isActive = activeStep === step.id;
@@ -59,27 +97,28 @@ export function InteractiveSimulator() {
                             <button
                                 key={step.id}
                                 onClick={() => setActiveStep(step.id)}
-                                className={`w-full text-left p-4 rounded-xl border transition-all duration-200 flex items-start gap-4 ${isActive
-                                        ? "bg-white border-blue-200 shadow-sm ring-1 ring-blue-100"
-                                        : "border-transparent hover:bg-slate-100"
+                                className={`w-full text-left p-5 rounded-2xl border transition-all duration-300 flex items-start gap-4 ${isActive
+                                    ? "bg-blue-500/5 border-blue-500/20 ring-1 ring-blue-500/10"
+                                    : "border-transparent hover:bg-white/5"
                                     }`}
                             >
-                                <div className={`flex items-center justify-center w-10 h-10 rounded-lg shrink-0 ${isActive ? "bg-blue-600 text-white shadow-md shadow-blue-600/20" :
-                                        isPast ? "bg-slate-200 text-slate-700" : "bg-slate-200 text-slate-400"
+                                <div className={`flex items-center justify-center w-12 h-12 rounded-xl shrink-0 transition-transform duration-500 ${isActive ? "bg-blue-600 text-white shadow-[0_0_20px_rgba(37,99,235,0.4)] scale-110" :
+                                    isPast ? "bg-emerald-500/10 text-emerald-500 border border-emerald-500/20" : "bg-white/5 text-slate-600 border border-white/5"
                                     }`}>
-                                    {isPast && !isActive ? <CheckCircle2 className="w-5 h-5" /> : <Icon className="w-5 h-5" />}
+                                    {isPast && !isActive ? <CheckCircle2 className="w-6 h-6" /> : <Icon className="w-6 h-6" />}
                                 </div>
                                 <div className="flex-1">
-                                    <div className={`font-bold ${isActive ? "text-blue-900" : "text-slate-700"}`}>
+                                    <div className="text-[10px] font-mono text-slate-500 mb-0.5 uppercase tracking-tighter">Fase 0{step.id}</div>
+                                    <div className={`font-black text-lg leading-none ${isActive ? "text-white" : "text-slate-500"}`}>
                                         {step.title}
                                     </div>
                                     {isActive && (
-                                        <div className="text-sm text-slate-500 mt-1.5 leading-snug animate-in fade-in slide-in-from-top-1">
+                                        <div className="text-sm text-slate-400 mt-2 leading-snug animate-in fade-in slide-in-from-top-1 duration-500">
                                             {step.description}
                                         </div>
                                     )}
                                 </div>
-                                {isActive && <ChevronRight className="w-5 h-5 text-blue-400 self-center shrink-0" />}
+                                {isActive && <ChevronRight className="w-5 h-5 text-blue-500 self-center shrink-0" />}
                             </button>
                         );
                     })}
@@ -87,116 +126,118 @@ export function InteractiveSimulator() {
             </div>
 
             {/* Simular Viewport Main Area */}
-            <div className="w-full lg:w-2/3 bg-slate-900 p-6 lg:p-10 relative min-h-[500px] flex flex-col">
-                {/* Header Mockup */}
-                <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
-                    <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-blue-600/20 flex items-center justify-center">
-                            <ShieldAlert className="w-4 h-4 text-blue-400" />
+            <div className="w-full lg:w-2/3 p-6 lg:p-12 relative min-h-[500px] flex flex-col bg-[radial-gradient(ellipse_at_top_right,rgba(37,99,235,0.05),transparent)]">
+
+                {/* AI Console Logs (The new Narrative Depth) */}
+                <div className="mb-8 flex flex-col gap-2">
+                    {displayedLogs.map((log, index) => (
+                        <div key={index} className="flex items-center gap-3 animate-in fade-in slide-in-from-left-2 duration-500">
+                            <span className="text-[10px] font-mono text-slate-600">[{new Date().toLocaleTimeString('en-GB')}]</span>
+                            <span className="text-[10px] font-mono text-blue-400 bg-blue-400/10 px-2 py-0.5 rounded border border-blue-400/20 uppercase tracking-widest leading-none">Status</span>
+                            <span className="text-xs font-mono text-slate-500 italic">{log}</span>
                         </div>
-                        <div>
-                            <div className="text-slate-200 font-medium text-sm">Simulación Segura</div>
-                            <div className="text-slate-500 text-xs">Atestados_Fast_Engine_v2.0</div>
-                        </div>
-                    </div>
-                    <div className="flex gap-2">
-                        <button className="px-3 py-1.5 rounded bg-slate-800 text-slate-400 text-xs font-medium border border-slate-700 hover:bg-slate-700 transition-colors">
-                            Reiniciar
-                        </button>
-                    </div>
+                    ))}
                 </div>
 
                 {/* Step Content Renders */}
                 <div className="flex-1 relative">
-                    {/* STEP 1 */}
+                    {/* STEP 1: INGESTA */}
                     {activeStep === 1 && (
-                        <div className="animate-in fade-in zoom-in-95 duration-300 h-full flex flex-col">
-                            <div className="bg-slate-800 rounded-xl border border-slate-700 p-5 flex-1 relative overflow-hidden group">
-                                <div className="absolute top-3 right-3 flex items-center gap-2">
-                                    <span className="text-[10px] font-mono text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded">Autoguardado On</span>
+                        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 h-full flex flex-col">
+                            <div className="bg-white/[0.02] rounded-[32px] border border-white/5 p-8 flex-1 relative overflow-hidden group shadow-inner">
+                                <div className="absolute top-4 right-4 flex items-center gap-2">
+                                    <span className="text-[10px] font-mono text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded-full border border-emerald-400/20">Modo: Libre Escala</span>
                                 </div>
-                                <p className="text-slate-400 font-mono text-sm leading-relaxed mt-4 relative">
+                                <div className="text-slate-400 font-mono text-base md:text-lg leading-relaxed mt-6 relative max-w-2xl">
                                     <span className={isTyping ? "animate-pulse" : ""}>
                                         A las 12 de la noche recibimos aviso emisora. nos personamos en c/ mayor 5, un individuo de camiseta roja agredía a la viandante maría garcía, DNI 12345678A. Usamos contención mínima proporcional...
                                     </span>
-                                    {isTyping && <span className="inline-block w-2.5 h-4 bg-blue-500 ml-1 animate-ping"></span>}
-                                </p>
-                            </div>
-                            <div className="mt-4 flex justify-end">
-                                <button onClick={() => setActiveStep(2)} className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-lg font-medium transition-colors text-sm shadow-lg shadow-blue-500/20">
-                                    Procesar Texto Libre <ArrowRight className="w-4 h-4" />
-                                </button>
-                            </div>
-                        </div>
-                    )}
-
-                    {/* STEP 2 */}
-                    {activeStep === 2 && (
-                        <div className="animate-in fade-in zoom-in-95 duration-300 h-full flex flex-col">
-                            <div className="bg-slate-800 rounded-xl border border-slate-700 p-5 flex-1">
-                                <div className="mb-4 flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider bg-amber-400/10 inline-flex px-3 py-1.5 rounded-full border border-amber-400/20">
-                                    <AlertTriangle className="w-3.5 h-3.5" /> Aislamiento de Entidades Activo
+                                    {isTyping && <span className="inline-block w-3 h-5 bg-blue-500 ml-1 animate-ping"></span>}
                                 </div>
-                                <p className="text-slate-300 font-mono text-sm leading-relaxed mt-2">
-                                    A las 12 de la noche recibimos aviso emisora. nos personamos en <span className="bg-slate-950 text-slate-500 px-1.5 py-0.5 rounded border border-slate-800 select-none group relative cursor-help">c/ mayor 5<span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-900 border border-slate-700 text-slate-200 text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">[UBICACION] oculto por defecto</span></span>, un individuo de camiseta roja agredía a la viandante <span className="bg-slate-950 text-slate-500 px-1.5 py-0.5 rounded border border-slate-800 select-none group relative cursor-help">maría garcía<span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-900 border border-slate-700 text-slate-200 text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">[IDENTIDAD] pseudo-anonimizado</span></span>, DNI <span className="bg-slate-950 text-slate-500 px-1.5 py-0.5 rounded border border-slate-800 select-none group relative cursor-help">12345678A<span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-900 border border-slate-700 text-slate-200 text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">[DNI] Enmascarado para IA</span></span>. Usamos contención mínima proporcional...
-                                </p>
                             </div>
-                            <div className="mt-4 flex justify-end">
-                                <button onClick={() => setActiveStep(3)} className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-lg font-medium transition-colors text-sm shadow-lg shadow-blue-500/20">
-                                    Estructurar Datos <ArrowRight className="w-4 h-4" />
+                            <div className="mt-8 flex justify-between items-center">
+                                <p className="text-xs text-slate-500 max-w-xs leading-relaxed italic">
+                                    Introduce el relato tal como ocurrió. El sistema omitirá faltas de ortografía o sintaxis iniciales.
+                                </p>
+                                <button onClick={() => setActiveStep(2)} className="flex items-center gap-3 bg-white text-black hover:bg-slate-200 px-8 py-4 rounded-2xl font-black transition-all shadow-xl shadow-white/5 active:scale-95">
+                                    Iniciar Purga de Datos <ArrowRight className="w-5 h-5" />
                                 </button>
                             </div>
                         </div>
                     )}
 
-                    {/* STEP 3 */}
-                    {activeStep === 3 && (
-                        <div className="animate-in fade-in zoom-in-95 duration-300 h-full flex flex-col">
-                            <div className="bg-slate-800 rounded-xl border border-slate-700 p-5 flex-1 overflow-y-auto space-y-3">
-                                <div className="text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4 border-b border-slate-700 pb-2">Narrativa Procesal Generada</div>
+                    {/* STEP 2: PURGA */}
+                    {activeStep === 2 && (
+                        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 h-full flex flex-col">
+                            <div className="bg-white/[0.02] rounded-[32px] border border-white/5 p-8 flex-1 shadow-inner relative overflow-hidden">
+                                <div className="mb-6 flex items-center gap-2 text-amber-500 text-[10px] font-black uppercase tracking-[0.2em] bg-amber-500/5 inline-flex px-4 py-2 rounded-full border border-amber-500/10">
+                                    <AlertTriangle className="w-4 h-4" /> Scanner PII Activo: 3/3 Entidades Enmascaradas
+                                </div>
+                                <p className="text-slate-300 font-mono text-base md:text-lg leading-relaxed mt-2 max-w-2xl">
+                                    A las 12 de la noche recibimos aviso emisora. nos personamos en <span className="bg-white/10 text-white/40 px-2 py-0.5 rounded border border-white/10 select-none group relative cursor-help">c/ mayor 5<span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 border border-white/10 text-slate-200 text-[10px] px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-all scale-95 group-hover:scale-100 whitespace-nowrap pointer-events-none">[UBICACION] oculto localmente</span></span>, un individuo de camiseta roja agredía a la viandante <span className="bg-white/10 text-white/40 px-2 py-0.5 rounded border border-white/10 select-none group relative cursor-help">maría garcía<span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 border border-white/10 text-slate-200 text-[10px] px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-all scale-95 group-hover:scale-100 whitespace-nowrap pointer-events-none">[IDENTIDAD] pseudo-anonimizado</span></span>, DNI <span className="bg-white/10 text-white/40 px-2 py-0.5 rounded border border-white/10 select-none group relative cursor-help">12345678A<span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 border border-white/10 text-slate-200 text-[10px] px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-all scale-95 group-hover:scale-100 whitespace-nowrap pointer-events-none">[DNI] Enmascarado para IA</span></span>. Usamos contención mínima proporcional...
+                                </p>
+                            </div>
+                            <div className="mt-8 flex justify-end">
+                                <button onClick={() => setActiveStep(3)} className="group flex items-center gap-3 bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-2xl font-black transition-all shadow-xl shadow-blue-500/20 active:scale-95">
+                                    Generar Compilación <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                </button>
+                            </div>
+                        </div>
+                    )}
 
-                                <div className="bg-slate-900/50 border border-slate-700/50 p-4 rounded-lg animate-in slide-in-from-left-4 fade-in duration-500">
-                                    <div className="flex gap-3">
-                                        <span className="text-blue-400 font-mono font-bold shrink-0 mt-0.5">[00:00]</span>
-                                        <div className="text-slate-300 text-sm leading-relaxed">
+                    {/* STEP 3: COMPILACION */}
+                    {activeStep === 3 && (
+                        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 h-full flex flex-col">
+                            <div className="bg-white/[0.02] rounded-[32px] border border-white/5 p-8 flex-1 overflow-y-auto space-y-4 shadow-inner">
+                                <div className="text-blue-400 text-[10px] font-black uppercase tracking-widest mb-6 border-b border-white/5 pb-4 flex items-center gap-2">
+                                    <Cpu className="w-4 h-4" /> Narrativa Procesal Generada
+                                </div>
+
+                                <div className="bg-white/5 border border-white/10 p-5 rounded-2xl animate-in slide-in-from-left-4 fade-in duration-500">
+                                    <div className="flex gap-4">
+                                        <span className="text-blue-500 font-mono font-black shrink-0 mt-0.5 mt-1">[00:00]</span>
+                                        <div className="text-slate-300 text-base leading-relaxed">
                                             Recepción del aviso a través de emisora informando de un posible altercado en vía pública (C/ [UBICACION 1]).
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="bg-slate-900/50 border border-slate-700/50 p-4 rounded-lg animate-in slide-in-from-left-4 fade-in duration-500 delay-150">
-                                    <div className="flex gap-3">
-                                        <span className="text-blue-400 font-mono font-bold shrink-0 mt-0.5">[HECHO]</span>
-                                        <div className="text-slate-300 text-sm leading-relaxed">
-                                            Personados en el lugar, los agentes de la fuerza actuante observan a un varón (descripción: camiseta roja) en actitud agresiva hacia una viandante (identificada como la parte perjudicada).
+                                <div className="bg-white/5 border border-white/10 p-5 rounded-2xl animate-in slide-in-from-left-4 fade-in duration-500 delay-150">
+                                    <div className="flex gap-4">
+                                        <span className="text-blue-500 font-mono font-black shrink-0 mt-1">[HECHO]</span>
+                                        <div className="text-slate-300 text-base leading-relaxed">
+                                            Personados en el lugar, los agentes de la fuerza actuante observan a un varón (descripción: camiseta roja) en actitud agresiva hacia una viandante identified como [IDENTIDAD 1].
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="mt-4 flex justify-end">
-                                <button onClick={() => setActiveStep(4)} className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-lg font-medium transition-colors text-sm shadow-lg shadow-blue-500/20">
-                                    Proceder a Revisión <ArrowRight className="w-4 h-4" />
+                            <div className="mt-8 flex justify-end">
+                                <button onClick={() => setActiveStep(4)} className="group flex items-center gap-3 bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-2xl font-black transition-all shadow-xl shadow-blue-500/20 active:scale-95">
+                                    Someter a Validación <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                 </button>
                             </div>
                         </div>
                     )}
 
-                    {/* STEP 4 */}
+                    {/* STEP 4: VALIDACION */}
                     {activeStep === 4 && (
-                        <div className="animate-in fade-in zoom-in-95 duration-300 h-full flex flex-col items-center justify-center text-center">
-                            <div className="w-20 h-20 bg-emerald-500/10 rounded-full flex items-center justify-center mb-6 ring-8 ring-slate-800">
-                                <CheckSquare className="w-10 h-10 text-emerald-400" />
+                        <div className="animate-in fade-in zoom-in-95 duration-500 h-full flex flex-col items-center justify-center text-center">
+                            <div className="relative mb-10">
+                                <div className="absolute inset-0 bg-emerald-500/20 blur-3xl animate-pulse"></div>
+                                <div className="relative w-24 h-24 bg-emerald-500/10 border border-emerald-500/30 rounded-full flex items-center justify-center ring-8 ring-black/50">
+                                    <CheckSquare className="w-12 h-12 text-emerald-400" />
+                                </div>
                             </div>
-                            <h4 className="text-xl font-bold text-white mb-2">Borrador Listo para Validar</h4>
-                            <p className="text-slate-400 text-sm max-w-sm mb-8">
-                                La IA te asiste, pero tú dictas la intervención. Revisa minuciosamente los hechos y trasládalos a la aplicación oficial de atestados cuando estés 100% conforme.
+                            <h4 className="text-2xl font-black text-white mb-3">Protocolo Verificado</h4>
+                            <p className="text-slate-400 text-base max-w-sm mb-10 leading-relaxed font-medium">
+                                El proceso de compilación ha finalizado con una pureza procesal predictiva del 100%. Revisa y exporta.
                             </p>
-                            <div className="flex gap-4">
-                                <button className="bg-slate-800 hover:bg-slate-700 text-white px-6 py-2.5 rounded-lg font-medium transition-colors border border-slate-700">
-                                    Editar Borrador
+                            <div className="flex flex-col sm:flex-row gap-4">
+                                <button className="bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-2xl font-black transition-all border border-white/10 backdrop-blur-md">
+                                    Ajustar Manualmente
                                 </button>
-                                <button className="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2.5 rounded-lg font-medium transition-colors shadow-lg shadow-emerald-600/20">
-                                    Copiar al Portapapeles
+                                <button className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-2xl font-black transition-all shadow-2xl shadow-emerald-600/20 flex items-center gap-2">
+                                    Exportar a Portapapeles
                                 </button>
                             </div>
                         </div>

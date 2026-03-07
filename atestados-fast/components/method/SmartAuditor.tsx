@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import { AlertCircle, CheckCircle2, ShieldAlert, CircleDashed, ChevronRight, Check } from 'lucide-react';
+import { AlertCircle, CheckCircle2, ShieldAlert, CircleDashed, ChevronRight, Check, Activity, Search } from 'lucide-react';
 
 export function SmartAuditor() {
-    const [checkedItems, setCheckedItems] = useState<number[]>([1]); // Start with one checked for demo purposes
+    const [checkedItems, setCheckedItems] = useState<number[]>([1]);
 
     const toggleCheck = (id: number) => {
         if (checkedItems.includes(id)) {
@@ -15,38 +15,53 @@ export function SmartAuditor() {
     };
 
     const checklist = [
-        { id: 1, text: "Tengo claro el orden cronológico de los eventos." },
-        { id: 2, text: "He reunido todos los indicios, actas y efectos intervinientes." },
-        { id: 3, text: "He evitado incluir valoraciones subjetivas (ej: 'estaba muy nervioso')." }
+        { id: 1, text: "Integridad Cronológica: Hechos ordenados sin saltos ambiguos." },
+        { id: 2, text: "Objetividad Pura: He eliminado valoraciones subjetivas o adjetivos innecesarios." },
+        { id: 3, text: "Aislamiento PII: He verificado que ningún dato sensible real sea procesado." }
     ];
 
     const score = Math.round((checkedItems.length / checklist.length) * 100);
 
-    // Determine color based on score
     let scoreColor = "text-amber-500";
-    let scoreBg = "bg-amber-500";
+    let scoreBg = "bg-amber-500/10";
+    let scoreBorder = "border-amber-500/20";
+    let scoreGlow = "shadow-[0_0_20px_rgba(245,158,11,0.2)]";
+
     if (score === 100) {
         scoreColor = "text-emerald-500";
-        scoreBg = "bg-emerald-500";
+        scoreBg = "bg-emerald-500/10";
+        scoreBorder = "border-emerald-500/20";
+        scoreGlow = "shadow-[0_0_30px_rgba(16,185,129,0.3)]";
     } else if (score < 50) {
-        scoreColor = "text-red-500";
-        scoreBg = "bg-red-500";
+        scoreColor = "text-rose-500";
+        scoreBg = "bg-rose-500/10";
+        scoreBorder = "border-rose-500/20";
+        scoreGlow = "shadow-[0_0_20px_rgba(244,63,94,0.2)]";
     }
 
     return (
-        <div className="bg-white rounded-3xl border border-slate-200 shadow-sm mb-20 overflow-hidden">
-            <div className="bg-slate-50 border-b border-slate-200 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-                <div>
-                    <h2 className="text-2xl font-bold text-slate-900 mb-2">Auditor Pre-Redacción</h2>
-                    <p className="text-slate-600">Comprueba la calidad de tu información antes de enviarla a procesar.</p>
+        <div className="bg-[#0c0c0e] rounded-[40px] border border-white/5 shadow-2xl mb-20 overflow-hidden relative group">
+            <div className="absolute inset-0 bg-blue-500/[0.02] pointer-events-none"></div>
+
+            <div className="bg-white/[0.02] border-b border-white/5 p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-10">
+                <div className="max-w-xl">
+                    <div className="flex items-center gap-3 mb-4">
+                        <div className="p-2.5 bg-blue-500/10 rounded-xl border border-blue-500/20">
+                            <Search className="w-5 h-5 text-blue-400" />
+                        </div>
+                        <h2 className="text-3xl font-black text-white tracking-tight italic">Expert Validator</h2>
+                    </div>
+                    <p className="text-slate-400 text-lg leading-relaxed font-medium">
+                        El filtro de integridad previo al procesado. Garantiza que la información cumple con los estándares de rigor judicial y seguridad operativa.
+                    </p>
                 </div>
 
-                {/* Score Gauge */}
-                <div className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
-                    <div className="relative w-16 h-16 flex items-center justify-center">
+                {/* Score Gauge: The Scanner Forense */}
+                <div className={`flex items-center gap-6 p-6 rounded-3xl border transition-all duration-700 bg-black/40 backdrop-blur-md ${scoreBorder} ${scoreGlow}`}>
+                    <div className="relative w-20 h-20 flex items-center justify-center">
                         <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
                             <path
-                                className="text-slate-100"
+                                className="text-white/5"
                                 d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                                 fill="none"
                                 stroke="currentColor"
@@ -58,43 +73,44 @@ export function SmartAuditor() {
                                 d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                                 fill="none"
                                 stroke="currentColor"
-                                strokeWidth="3"
+                                strokeWidth="4"
+                                strokeLinecap="round"
                             />
                         </svg>
-                        <div className={`absolute text-lg font-bold ${scoreColor}`}>{score}%</div>
+                        <div className={`absolute text-xl font-black font-mono tracking-tighter ${scoreColor}`}>{score}%</div>
                     </div>
                     <div>
-                        <div className="text-sm font-bold text-slate-700">Nivel de Calidad</div>
-                        <div className="text-xs text-slate-500">
-                            {score === 100 ? "¡Listo para procesar!" : "Requiere más atención"}
+                        <div className="text-xs font-mono font-bold text-slate-500 uppercase tracking-widest mb-1">Status de Integridad</div>
+                        <div className={`text-sm font-black uppercase ${scoreColor}`}>
+                            {score === 100 ? "Validación Superada" : score < 50 ? "Alerta de Rigor" : "Procesamiento Parcial"}
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="p-6 md:p-8 grid md:grid-cols-2 gap-8 lg:gap-12">
+            <div className="p-8 md:p-12 grid md:grid-cols-2 gap-12">
                 {/* Interactive Checklist */}
                 <div>
-                    <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-6 flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-blue-600" /> Checks Recomendados
+                    <h3 className="text-xs font-black text-white uppercase tracking-[0.2em] mb-8 flex items-center gap-3">
+                        <Activity className="w-4 h-4 text-blue-500" /> Protocolo de Verificación
                     </h3>
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                         {checklist.map((item) => {
                             const isChecked = checkedItems.includes(item.id);
                             return (
                                 <button
                                     key={item.id}
                                     onClick={() => toggleCheck(item.id)}
-                                    className={`w-full text-left flex items-start gap-3 p-4 rounded-xl border transition-all ${isChecked
-                                            ? "bg-slate-50 border-emerald-200 hover:bg-slate-100"
-                                            : "bg-white border-slate-200 shadow-sm hover:border-blue-300 hover:shadow"
+                                    className={`w-full text-left flex items-start gap-4 p-5 rounded-[24px] border transition-all duration-300 ${isChecked
+                                        ? "bg-emerald-500/5 border-emerald-500/20"
+                                        : "bg-white/[0.02] border-white/5 hover:border-blue-500/30 hover:bg-white/[0.04]"
                                         }`}
                                 >
-                                    <div className={`shrink-0 w-6 h-6 rounded-md flex items-center justify-center mt-0.5 transition-colors ${isChecked ? "bg-emerald-500 text-white" : "border-2 border-slate-300 text-transparent"
+                                    <div className={`shrink-0 w-7 h-7 rounded-xl flex items-center justify-center mt-0.5 transition-all duration-500 ${isChecked ? "bg-emerald-500 text-black scale-110 shadow-[0_0_15px_rgba(16,185,129,0.4)]" : "bg-white/5 border border-white/10 text-transparent"
                                         }`}>
-                                        <Check className="w-4 h-4" />
+                                        <Check className="w-4 h-4 font-bold" />
                                     </div>
-                                    <span className={`text-sm leading-relaxed transition-colors ${isChecked ? "text-slate-500 line-through decoration-slate-300" : "text-slate-700 font-medium"
+                                    <span className={`text-sm md:text-base leading-relaxed transition-all ${isChecked ? "text-slate-500 line-through opacity-50" : "text-slate-300 font-bold"
                                         }`}>
                                         {item.text}
                                     </span>
@@ -104,29 +120,33 @@ export function SmartAuditor() {
                     </div>
                 </div>
 
-                {/* Smart Alerts (formerly Errores Frecuentes) */}
+                {/* Smart Alerts */}
                 <div>
-                    <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-6 flex items-center gap-2">
-                        <ShieldAlert className="w-4 h-4 text-amber-500" /> Alertas del Sistema
+                    <h3 className="text-xs font-black text-white uppercase tracking-[0.2em] mb-8 flex items-center gap-3">
+                        <ShieldAlert className="w-4 h-4 text-amber-500" /> Alertas Predictivas
                     </h3>
 
-                    <div className="space-y-4">
-                        <div className="bg-amber-50/50 border border-amber-200/60 p-4 rounded-xl flex gap-3">
-                            <AlertCircle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
+                    <div className="space-y-6">
+                        <div className="bg-amber-500/5 border border-amber-500/10 p-6 rounded-[32px] flex gap-5 group/alert">
+                            <div className="w-10 h-10 rounded-2xl bg-amber-500/10 flex items-center justify-center shrink-0 border border-amber-500/20 group-hover/alert:scale-110 transition-transform">
+                                <AlertCircle className="w-5 h-5 text-amber-500" />
+                            </div>
                             <div>
-                                <h4 className="text-sm font-bold text-amber-900 mb-1">Cuidado con las Identidades</h4>
-                                <p className="text-xs text-amber-800/80 leading-relaxed">
-                                    No copies y pegues volcados completos de bases de datos o filiaciones SIP enteras directamente en el prompt. Utiliza alias o iniciales.
+                                <h4 className="text-sm font-black text-amber-200 mb-1 uppercase tracking-tighter">Filiaciones Masivas</h4>
+                                <p className="text-xs text-slate-400 leading-relaxed font-medium">
+                                    Evita volcar bases de datos íntegras. El sistema detecta patrones de PII, pero la responsabilidad de la purga inicial es del instructor.
                                 </p>
                             </div>
                         </div>
 
-                        <div className="bg-blue-50/50 border border-blue-200/60 p-4 rounded-xl flex gap-3">
-                            <AlertCircle className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
+                        <div className="bg-blue-500/5 border border-blue-500/10 p-6 rounded-[32px] flex gap-5 group/alert">
+                            <div className="w-10 h-10 rounded-2xl bg-blue-500/10 flex items-center justify-center shrink-0 border border-blue-500/20 group-hover/alert:scale-110 transition-transform">
+                                <Activity className="w-5 h-5 text-blue-400" />
+                            </div>
                             <div>
-                                <h4 className="text-sm font-bold text-blue-900 mb-1">Responsabilidad Procesal</h4>
-                                <p className="text-xs text-blue-800/80 leading-relaxed">
-                                    El motor estructura por ti, pero no certifica los hechos. Dar por bueno el texto de la IA sin leerlo es el error número uno. Revisa siempre.
+                                <h4 className="text-sm font-black text-blue-200 mb-1 uppercase tracking-tighter">Certificación de Hechos</h4>
+                                <p className="text-xs text-slate-400 leading-relaxed font-medium">
+                                    La IA no certifica la veracidad. Su labor es puramente estructural y narrativa. Lee, ajusta y valida.
                                 </p>
                             </div>
                         </div>
