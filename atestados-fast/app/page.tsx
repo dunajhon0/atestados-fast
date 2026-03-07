@@ -69,61 +69,70 @@ export default function Home() {
                 <AdSlot clientId="ca-pub-3779816940145698" slotId={process.env.NEXT_PUBLIC_ADSENSE_SLOT_HEADER || ""} format="auto" />
             </section>
 
-            {/* Cards Section V3 */}
-            <section className="py-8 md:py-12 bg-white">
+            {/* Cards Section (Redesigned completely) */}
+            <section className="pb-12 pt-2 md:pt-6 md:pb-16 bg-white relative z-10 w-full">
                 <div className="container mx-auto px-4 max-w-6xl">
-                    <div className="grid md:grid-cols-3 gap-6 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 fill-mode-both">
+                    <div className="grid md:grid-cols-3 gap-6 lg:gap-8 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 fill-mode-both">
 
                         {/* Card 1 */}
-                        <Card className="group bg-white border border-slate-200 hover:border-brand-primary/40 hover:shadow-2xl hover:shadow-brand-primary/10 transition-all duration-300 text-left flex flex-col p-8 md:p-10 rounded-[18px] relative overflow-hidden">
-                            <div className="h-16 w-16 rounded-full bg-blue-50/80 flex items-center justify-center mb-6 ring-4 ring-white shadow-sm transition-transform duration-300 group-hover:bg-blue-100 group-hover:scale-110">
-                                <Zap className="h-8 w-8 text-brand-primary" />
+                        <div className="group bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 text-left flex flex-col p-8 md:p-10 rounded-[18px]">
+                            {/* Icon Container */}
+                            <div className="h-14 w-14 rounded-full bg-blue-50 flex items-center justify-center mb-8 shadow-sm group-hover:bg-blue-100 transition-colors">
+                                <Zap className="h-6 w-6 text-blue-500" />
                             </div>
-                            <CardTitle className="text-brand-dark mb-3 text-2xl font-bold tracking-tight">Empieza en 60s</CardTitle>
-                            <p className="text-slate-500 text-base leading-relaxed mb-8 flex-grow">
+
+                            {/* Content */}
+                            <h3 className="text-xl font-bold text-slate-900 mb-3 tracking-tight">Empieza en 60s</h3>
+                            <p className="text-slate-500 text-sm md:text-base leading-relaxed mb-8 flex-grow">
                                 Introduce los datos básicos de tu intervención y obtén una estructura jerárquica clara al instante.
                             </p>
-                            <Button asChild variant="ghost" size="md" className="w-full mt-4 rounded-[14px] bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white transition-all shadow-none group-hover:shadow-md">
-                                <Link href="/como-funciona">
-                                    <Info className="h-4 w-4" />
-                                    Ver cómo funciona
-                                </Link>
-                            </Button>
-                        </Card>
+
+                            {/* Button */}
+                            <Link href="/como-funciona" className="inline-flex items-center justify-center gap-2.5 w-full px-6 py-4 bg-blue-50 text-blue-700 font-semibold rounded-[12px] transition-all hover:bg-blue-600 hover:text-white hover:shadow-md">
+                                <Info className="h-5 w-5" />
+                                Ver cómo funciona
+                            </Link>
+                        </div>
 
                         {/* Card 2 */}
-                        <Card className="group bg-white border border-slate-200 hover:border-brand-secondary/40 hover:shadow-2xl hover:shadow-brand-secondary/10 transition-all duration-300 text-left flex flex-col p-8 md:p-10 rounded-[18px] relative overflow-hidden shadow-sm">
-                            <div className="h-16 w-16 rounded-full bg-purple-50/80 flex items-center justify-center mb-6 ring-4 ring-white shadow-sm transition-transform duration-300 group-hover:bg-purple-100 group-hover:scale-110">
-                                <Layers className="h-8 w-8 text-brand-secondary" />
+                        <div className="group bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 text-left flex flex-col p-8 md:p-10 rounded-[18px]">
+                            {/* Icon Container */}
+                            <div className="h-14 w-14 rounded-full bg-slate-50 flex items-center justify-center mb-8 shadow-sm group-hover:bg-slate-100 transition-colors">
+                                <Layers className="h-6 w-6 text-slate-600" />
                             </div>
-                            <CardTitle className="text-brand-dark mb-3 text-2xl font-bold tracking-tight">Qué Obtienes</CardTitle>
-                            <p className="text-slate-500 text-base leading-relaxed mb-4 flex-grow">
+
+                            {/* Content */}
+                            <h3 className="text-xl font-bold text-slate-900 mb-3 tracking-tight">Qué Obtienes</h3>
+                            <p className="text-slate-500 text-sm md:text-base leading-relaxed mb-8 flex-grow">
                                 Un esqueleto base para tus diligencias y herramientas accesorias útiles para todo el ciclo de trabajo.
                             </p>
-                            <Button asChild variant="ghost" size="md" className="w-full mt-4 rounded-[14px] bg-purple-50 text-purple-700 hover:bg-purple-600 hover:text-white transition-all shadow-none group-hover:shadow-md">
-                                <Link href="/herramientas">
-                                    <Wrench className="h-4 w-4" />
-                                    Explorar herramientas
-                                </Link>
-                            </Button>
-                        </Card>
+
+                            {/* Button */}
+                            <Link href="/herramientas" className="inline-flex items-center justify-center gap-2.5 w-full px-6 py-4 bg-slate-50 text-slate-700 font-semibold rounded-[12px] transition-all hover:bg-slate-800 hover:text-white hover:shadow-md">
+                                <Wrench className="h-5 w-5" />
+                                Explorar herramientas
+                            </Link>
+                        </div>
 
                         {/* Card 3 */}
-                        <Card className="group bg-white border border-slate-200 hover:border-red-300 hover:shadow-2xl hover:shadow-red-500/10 transition-all duration-300 text-left flex flex-col p-8 md:p-10 rounded-[18px] relative overflow-hidden">
-                            <div className="h-16 w-16 rounded-full bg-red-50/80 flex items-center justify-center mb-6 ring-4 ring-white shadow-sm transition-transform duration-300 group-hover:bg-red-100 group-hover:scale-110">
-                                <ShieldCheck className="h-8 w-8 text-red-500" />
+                        <div className="group bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 text-left flex flex-col p-8 md:p-10 rounded-[18px]">
+                            {/* Icon Container */}
+                            <div className="h-14 w-14 rounded-full bg-purple-50 flex items-center justify-center mb-8 shadow-sm group-hover:bg-purple-100 transition-colors">
+                                <ShieldCheck className="h-6 w-6 text-purple-600" />
                             </div>
-                            <CardTitle className="text-brand-dark mb-3 text-2xl font-bold tracking-tight">Límites Rojos</CardTitle>
-                            <p className="text-slate-500 text-base leading-relaxed mb-4 flex-grow">
+
+                            {/* Content */}
+                            <h3 className="text-xl font-bold text-slate-900 mb-3 tracking-tight">Límites Rojos</h3>
+                            <p className="text-slate-500 text-sm md:text-base leading-relaxed mb-8 flex-grow">
                                 Atestados Fast es orientativo. NUNCA introduzcas datos personales (PII) reales en las herramientas.
                             </p>
-                            <Button asChild variant="ghost" size="md" className="w-full mt-4 rounded-[14px] bg-red-50 text-red-700 hover:bg-red-600 hover:text-white transition-all shadow-none group-hover:shadow-md">
-                                <Link href="/buenas-practicas">
-                                    <BookOpen className="h-4 w-4" />
-                                    Leer buenas prácticas
-                                </Link>
-                            </Button>
-                        </Card>
+
+                            {/* Button */}
+                            <Link href="/buenas-practicas" className="inline-flex items-center justify-center gap-2.5 w-full px-6 py-4 bg-purple-50 text-purple-700 font-semibold rounded-[12px] transition-all hover:bg-purple-600 hover:text-white hover:shadow-md">
+                                <BookOpen className="h-5 w-5" />
+                                Leer buenas prácticas
+                            </Link>
+                        </div>
 
                     </div>
                 </div>
